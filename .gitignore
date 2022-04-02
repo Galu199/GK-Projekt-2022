@@ -30,6 +30,6 @@ _ReSharper*/
 .vs/
 #Nuget packages folder
 packages/
-GK-Project-2022\Library
-GK-Project-2022\Temp
-GK-Project-2022\UserSettings
+GK-Project-2022\Library\
+GK-Project-2022\Temp\
+GK-Project-2022\UserSettings\
