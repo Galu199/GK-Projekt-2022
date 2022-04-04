@@ -9,8 +9,8 @@ public class LevelController : MonoBehaviour
     public GameObject WallsContainer;
     public int mapY = 10;
     public int mapX = 10;
-    private int spawnX = 1;
-    private int spawnY = 1;
+    public int spawnX = 1;
+    public int spawnY = 1;
     private List<List<int>> map = new List<List<int>>();//2d map container
     private List<Wall> walls = new List<Wall>();//List of Walls
 
@@ -34,7 +34,9 @@ public class LevelController : MonoBehaviour
 
     public void MovePlayer()
     {
-        player.GetComponent<CharacterController>().Move(new Vector3(spawnX, 1.5f, spawnY));
+        player.SetActive(false);
+        player.transform.position = (new Vector3(spawnX, 1.5f, spawnY));
+        player.SetActive(true);
     }
 
     private void GenerateRock(int x, int y)
