@@ -83,6 +83,7 @@ public class StandardEnemyBehaviour : MonoBehaviour
 
     void Follow()
     {
+        Debug.Log("Following");
         navMesh.SetDestination(player.position);
     }
 
@@ -93,19 +94,18 @@ public class StandardEnemyBehaviour : MonoBehaviour
 
     void SetGoal()
     {
-        Debug.Log("Setting Target");
         float randXCord = Random.Range(-sightRange, sightRange);
         float randZCord = Random.Range(-sightRange, sightRange);
 
         goalToKill = Physics.OverlapSphere(transform.position, sightRange, isPlayer);
 
-        //if(goal != null)
-        //{
-        //    player = goalToKill[0].transform;
-        //    hasGoal = true;
-        //}
+        if (goalToKill.Length > 0)
+        {
+            player = goalToKill[0].transform;
+            hasGoal = true;
+        }
 
-        //else
+        else
         {
 
             goal = new Vector3(transform.position.x + randXCord, 0, transform.position.z + randZCord);
