@@ -61,6 +61,10 @@
     <Compile Include="Assets\Scripts\MapPerlinRoom.cs" />
     <Compile Include="Assets\Scripts\MapMazeRoom.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\StandardEnemyBehaviour.cs" />
+    <Compile Include="Assets\Scripts\NavMeshComponents\NavMeshSurface.cs" />
+    <Compile Include="Assets\Scripts\NavMeshComponents\NavMeshModifier.cs" />
+    <Compile Include="Assets\Scripts\NavMeshComponents\NavMeshLink.cs" />
+    <Compile Include="Assets\Scripts\NavMeshComponents\NavMeshModifierVolume.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Terrain\readme.txt" />
