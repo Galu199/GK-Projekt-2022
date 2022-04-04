@@ -630,7 +630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_RunSpeed
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_JumpSpeed
@@ -638,7 +638,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_WalkSpeed
-      value: 3
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_StepInterval
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_GravityMultiplier
@@ -859,8 +863,8 @@ MonoBehaviour:
   player: {fileID: 207856547}
   prefabWall: {fileID: 558021469054797723, guid: 85f24cf01791644418a498e6950790c5, type: 3}
   WallsContainer: {fileID: 1370678318}
-  mapY: 10
-  mapX: 10
+  mapY: 30
+  mapX: 30
 --- !u!1 &1877160672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1035,7 +1039,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b749f546d97cdfd4c832541db637c60f, type: 2}
+  - {fileID: 2100000, guid: f5f53df92faee6340ba0c9bf27adf907, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
