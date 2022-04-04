@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\MapTunnelingRoom.cs" />
     <Compile Include="Assets\Scripts\MapMazeRoom.cs" />
     <Compile Include="Assets\Scripts\MapPerlinRoom.cs" />
+    <Compile Include="Assets\Scripts\Objects\Wall.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Terrain\readme.txt" />
