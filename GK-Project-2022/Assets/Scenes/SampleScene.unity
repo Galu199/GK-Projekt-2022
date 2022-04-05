@@ -1004,10 +1004,10 @@ MonoBehaviour:
   enemy: {fileID: 1699397920}
   prefabWall: {fileID: 558021469054797723, guid: 85f24cf01791644418a498e6950790c5, type: 3}
   WallsContainer: {fileID: 1370678318}
-  mapY: 100
-  mapX: 100
-  spawnX: 50
-  spawnY: 50
+  mapY: 11
+  mapX: 21
+  spawnX: 1
+  spawnY: 1
 --- !u!1 &1877160672
 GameObject:
   m_ObjectHideFlags: 0

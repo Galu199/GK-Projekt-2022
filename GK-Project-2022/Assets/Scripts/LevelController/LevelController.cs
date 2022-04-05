@@ -20,7 +20,9 @@ public class LevelController : MonoBehaviour
 
     private void Start()
     {
-        map = MapTunnelingRoom.Generate(mapX, mapY, spawnX, spawnY);
+        //map = MapTunnelingRoom.Generate(mapX, mapY, spawnX, spawnY);
+        map = MapMazeRoom.Generate(mapX, mapY, spawnX, spawnY);
+        if (map == null) map = MapTunnelingRoom.Generate(mapX, mapY, spawnX, spawnY);
         navMeshSurface.BuildNavMesh();
         MovePlayer();
         MoveEnemy();
