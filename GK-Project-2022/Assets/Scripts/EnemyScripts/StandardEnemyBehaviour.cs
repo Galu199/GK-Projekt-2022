@@ -84,13 +84,13 @@ public class StandardEnemyBehaviour : MonoBehaviour
 
     void Follow()
     {
-        Debug.Log("Following");
+        //Debug.Log("Following");
         navMesh.SetDestination(player.position);
     }
 
     void Attack()
     {
-        Debug.Log("Attacking");
+        //Debug.Log("Attacking");
     }
 
     void SetGoal()

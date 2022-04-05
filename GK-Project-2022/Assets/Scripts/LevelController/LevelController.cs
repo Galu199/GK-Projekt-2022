@@ -8,6 +8,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] NavMeshSurface navMeshSurface;
 
     public GameObject player;
+    public GameObject enemy;
     public GameObject prefabWall;
     public GameObject WallsContainer;
     public int mapY = 10;
@@ -21,8 +22,10 @@ public class LevelController : MonoBehaviour
     {
         map = MapTunnelingRoom.Generate(mapX, mapY, spawnX, spawnY);
         navMeshSurface.BuildNavMesh();
-        SpawnMap();
         MovePlayer();
+        MoveEnemy();
+        map = optimizeMapWalls.Generate(mapX, mapY, map);
+        SpawnMap();
     }
 
     public void SpawnMap()
@@ -31,7 +34,7 @@ public class LevelController : MonoBehaviour
         {
             for (int x = 0; x < mapX; x++)
             {
-                if (map[y][x] == 1) GenerateRock(x, y);
+                if (map[y][x] == 1) GenerateWall(x, y);
             }
         }
     }
@@ -43,7 +46,13 @@ public class LevelController : MonoBehaviour
         player.SetActive(true);
     }
 
-    private void GenerateRock(int x, int y)
+    public void MoveEnemy()
+    {
+        var freefield = RandomFreeField.Generate(mapX, mapY, map);
+        enemy.transform.position = (new Vector3(freefield.Item1, 1.5f, freefield.Item2));
+    }
+
+    private void GenerateWall(int x, int y)
     {
         GameObject Obj = Instantiate(prefabWall, WallsContainer.transform);
         var wall = Obj.GetComponent<Wall>();
