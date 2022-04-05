@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class LevelController : MonoBehaviour
 {
+    [SerializeField] NavMeshSurface navMeshSurface;
+
     public GameObject player;
     public GameObject prefabWall;
     public GameObject WallsContainer;
@@ -17,6 +20,7 @@ public class LevelController : MonoBehaviour
     private void Start()
     {
         map = MapTunnelingRoom.Generate(mapX, mapY, spawnX, spawnY);
+        navMeshSurface.BuildNavMesh();
         SpawnMap();
         MovePlayer();
     }

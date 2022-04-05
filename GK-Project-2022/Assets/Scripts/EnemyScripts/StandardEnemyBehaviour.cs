@@ -8,7 +8,7 @@ public class StandardEnemyBehaviour : MonoBehaviour
 
     Transform player;
 
-    [SerializeField] Collider[] goalToKill;
+    //Collider[] goalToKill;
 
     //[SerializeField] int hp = 50;
     //[SerializeField] float rotSpeed = 5f;
@@ -39,16 +39,17 @@ public class StandardEnemyBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        //player = GetComponent<FirstPersonController>().transform;
+        Collider []goalToKill = Physics.OverlapSphere(transform.position, 999999999999, isPlayer);
+        if (goalToKill.Length > 0)
+        {
+            player = goalToKill[0].transform;
+        }
     }
 
     void Update()
     {
-        float distanceToPlayer = 999999999999;
-        if (player != null)
-        {
-            distanceToPlayer = Vector3.Distance(player.position, transform.position);
-        }
+        float distanceToPlayer = Vector3.Distance(player.position, transform.position);
+
         if (distanceToPlayer > sightRange)
         {
             Wander();
@@ -97,15 +98,15 @@ public class StandardEnemyBehaviour : MonoBehaviour
         float randXCord = Random.Range(-sightRange, sightRange);
         float randZCord = Random.Range(-sightRange, sightRange);
 
-        goalToKill = Physics.OverlapSphere(transform.position, sightRange, isPlayer);
+        //goalToKill = Physics.OverlapSphere(transform.position, sightRange, isPlayer);
 
-        if (goalToKill.Length > 0)
-        {
-            player = goalToKill[0].transform;
-            hasGoal = true;
-        }
+        //if (goalToKill.Length > 0)
+        //{
+        //    player = goalToKill[0].transform;
+        //    hasGoal = true;
+        //}
 
-        else
+        //else
         {
 
             goal = new Vector3(transform.position.x + randXCord, 0, transform.position.z + randZCord);
