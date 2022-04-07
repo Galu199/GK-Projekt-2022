@@ -11,7 +11,7 @@ public class MapMazeRoom
         //IMPORTANT RULES
         if (sizeX < 3 || sizeY < 3) return null;
         if (spawnX < 1 || spawnY < 1) return null;
-        //CHECK IF SPAWN CORRECT BEFORE SPAWN
+        //CHECK IF SPAWN CORRECT BEFORE VARIABLES
         if (spawnX % 2 == 0) spawnX -= 1;
         if (spawnY % 2 == 0) spawnY -= 1;
         //VARIABLES
@@ -102,30 +102,26 @@ public class MapMazeRoom
                 var currentCord = new Tuple<int, int>(here.Item1, here.Item2);
                 path.Add(currentCord);
                 step = 0;
-                bool go = false;
-                while (go == false)
+                var avilibleDirection = new List<int>();
+                if (s == true) avilibleDirection.Add(1);
+                if (n == true) avilibleDirection.Add(2);
+                if (e == true) avilibleDirection.Add(3);
+                if (w == true) avilibleDirection.Add(4);
+                var direction = avilibleDirection[UnityEngine.Random.Range(0, avilibleDirection.Count)];
+                switch (direction)
                 {
-                    var direction = UnityEngine.Random.Range(1, 4 + 1);
-                    if (direction == 1 && s == true)
-                    {
+                    case 1:
                         here = new Tuple<int, int>(here.Item1, here.Item2 + 2);
-                        go = true;
-                    }
-                    if (direction == 2 && n == true)
-                    {
+                        break;
+                    case 2:
                         here = new Tuple<int, int>(here.Item1, here.Item2 - 2);
-                        go = true;
-                    }
-                    if (direction == 3 && e == true)
-                    {
+                        break;
+                    case 3:
                         here = new Tuple<int, int>(here.Item1 + 2, here.Item2);
-                        go = true;
-                    }
-                    if (direction == 4 && w == true)
-                    {
+                        break;
+                    case 4:
                         here = new Tuple<int, int>(here.Item1 - 2, here.Item2);
-                        go = true;
-                    }
+                        break;
                 }
                 map[here.Item2][here.Item1] = 0;
                 int srodeky = (path[path.Count - step - 1].Item2 + here.Item2) / 2;
