@@ -62,12 +62,13 @@
     <Compile Include="Assets\Scripts\NavMeshComponents\NavMeshSurface.cs" />
     <Compile Include="Assets\Scripts\Objects\Wall.cs" />
     <Compile Include="Assets\Scripts\LevelController\MapPerlinRoom.cs" />
+    <Compile Include="Assets\Scripts\LevelController\optimizeMapWalls.cs" />
     <Compile Include="Assets\Scripts\LevelController\MapMazeRoom.cs" />
     <Compile Include="Assets\Scripts\NavMeshComponents\NavMeshModifier.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\StandardEnemyBehaviour.cs" />
     <Compile Include="Assets\Scripts\NavMeshComponents\NavMeshModifierVolume.cs" />
     <Compile Include="Assets\Scripts\LevelController\RandomFreeField.cs" />
-    <Compile Include="Assets\Scripts\LevelController\optimizeMapWalls.cs" />
+    <Compile Include="Assets\Scripts\Sprint\Sprint.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Terrain\readme.txt" />

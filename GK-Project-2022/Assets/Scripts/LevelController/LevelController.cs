@@ -20,14 +20,7 @@ public class LevelController : MonoBehaviour
 
     private void Start()
     {
-        //map = MapTunnelingRoom.Generate(mapX, mapY, spawnX, spawnY);
-        map = MapMazeRoom.Generate(mapX, mapY, spawnX, spawnY);
-        if (map == null) map = MapTunnelingRoom.Generate(mapX, mapY, spawnX, spawnY);
-        navMeshSurface.BuildNavMesh();
-        MovePlayer();
-        MoveEnemy();
-        map = optimizeMapWalls.Generate(mapX, mapY, map);
-        SpawnMap();
+        
     }
 
     public void SpawnMap()
@@ -52,6 +45,17 @@ public class LevelController : MonoBehaviour
     {
         var freefield = RandomFreeField.Generate(mapX, mapY, map);
         enemy.transform.position = (new Vector3(freefield.Item1, 1.5f, freefield.Item2));
+    }
+
+    private void GenerateMap()
+    {
+        map = MapMazeRoom.Generate(mapX, mapY, spawnX, spawnY);
+        if (map == null) map = MapTunnelingRoom.Generate(mapX, mapY, spawnX, spawnY);
+        navMeshSurface.BuildNavMesh();
+        MovePlayer();
+        MoveEnemy();
+        map = optimizeMapWalls.Generate(mapX, mapY, map);
+        SpawnMap();
     }
 
     private void GenerateWall(int x, int y)
