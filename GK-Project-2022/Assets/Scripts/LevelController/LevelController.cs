@@ -5,8 +5,7 @@ using UnityEngine.AI;
 
 public class LevelController : MonoBehaviour
 {
-    [SerializeField] NavMeshSurface navMeshSurface;
-
+    public NavMeshSurface navMeshSurface;
     public GameObject player;
     public GameObject enemy;
     public GameObject prefabWall;
@@ -15,15 +14,40 @@ public class LevelController : MonoBehaviour
     public int mapX = 10;
     public int spawnX = 1;
     public int spawnY = 1;
+    public int seed = 0;
+    [Range(0, 2)] public int MapGenNumber = 0;
     private List<List<int>> map = new List<List<int>>();//2d map container
     private List<Wall> walls = new List<Wall>();//List of Walls
 
-    private void Start()
+    public void GenerateMap()
     {
-        
+        foreach (var wall in walls)
+        {
+            wall.Delete();
+        }
+        walls.Clear();
+        switch (MapGenNumber)
+        {
+            case 0:
+            default:
+                map = MapTunnelingRoom.Generate(mapX, mapY, spawnX, spawnY, seed);
+                break;
+            case 1:
+                if ((map = MapMazeRoom.Generate(mapX, mapY, spawnX, spawnY, seed)) == null)
+                    map = MapTunnelingRoom.Generate(mapX, mapY, spawnX, spawnY, seed);
+                break;
+            case 2:
+
+                break;
+        }
+        MovePlayer();
+        MoveEnemy();
+        navMeshSurface.BuildNavMesh();
+        map = optimizeMapWalls.Generate2(mapX, mapY, map);
+        SpawnMap();
     }
 
-    public void SpawnMap()
+    private void SpawnMap()
     {
         for (int y = 0; y < mapY; y++)
         {
@@ -34,36 +58,25 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    public void MovePlayer()
+    private void MovePlayer()
     {
         player.SetActive(false);
-        player.transform.position = (new Vector3(spawnX, 1.5f, spawnY));
+        player.transform.position = (new Vector3(spawnX * prefabWall.transform.localScale.x, 1.5f, spawnY * prefabWall.transform.localScale.z));
         player.SetActive(true);
     }
 
-    public void MoveEnemy()
+    private void MoveEnemy()
     {
         var freefield = RandomFreeField.Generate(mapX, mapY, map);
-        enemy.transform.position = (new Vector3(freefield.Item1, 1.5f, freefield.Item2));
+        enemy.transform.position = (new Vector3(freefield.Item1* prefabWall.transform.localScale.x, 1.5f, freefield.Item2* prefabWall.transform.localScale.z));
     }
 
-    private void GenerateMap()
-    {
-        map = MapMazeRoom.Generate(mapX, mapY, spawnX, spawnY);
-        if (map == null) map = MapTunnelingRoom.Generate(mapX, mapY, spawnX, spawnY);
-        navMeshSurface.BuildNavMesh();
-        MovePlayer();
-        MoveEnemy();
-        map = optimizeMapWalls.Generate(mapX, mapY, map);
-        SpawnMap();
-    }
-
-    private void GenerateWall(int x, int y)
+    private void GenerateWall(int x, int z)
     {
         GameObject Obj = Instantiate(prefabWall, WallsContainer.transform);
         var wall = Obj.GetComponent<Wall>();
         walls.Add(wall);
-        wall.Teleport(new Vector3(x, 2, y));
+        wall.Teleport(new Vector3(x * Obj.transform.localScale.x, 2, z * Obj.transform.localScale.z));
     }
 
 }

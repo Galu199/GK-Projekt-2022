@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class MapTunnelingRoom
 {
-    static public List<List<int>> Generate(int sizeX = 4, int sizeY = 4, int spawnX = 1, int spawnY = 1)
+    static public List<List<int>> Generate(int sizeX = 4, int sizeY = 4, int spawnX = 1, int spawnY = 1, int seed = 0)
     {
+        //SEED
+        UnityEngine.Random.InitState(seed);
         //VARIABLES
         var map = new List<List<int>>();
         var X = spawnX;

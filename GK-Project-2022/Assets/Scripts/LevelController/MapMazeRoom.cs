@@ -6,8 +6,10 @@ using UnityEngine;
 
 public class MapMazeRoom
 {
-    static public List<List<int>> Generate(int sizeX = 3, int sizeY = 3, int spawnX = 1, int spawnY = 1)
+    static public List<List<int>> Generate(int sizeX = 3, int sizeY = 3, int spawnX = 1, int spawnY = 1, int seed = 0)
     {
+        //SEED
+        UnityEngine.Random.InitState(seed);
         //IMPORTANT RULES
         if (sizeX < 3 || sizeY < 3) return null;
         if (spawnX < 1 || spawnY < 1) return null;
@@ -99,8 +101,7 @@ public class MapMazeRoom
             }
             else
             {
-                var currentCord = new Tuple<int, int>(here.Item1, here.Item2);
-                path.Add(currentCord);
+                path.Add(here);
                 step = 0;
                 var avilibleDirection = new List<int>();
                 if (s == true) avilibleDirection.Add(1);
@@ -112,21 +113,25 @@ public class MapMazeRoom
                 {
                     case 1:
                         here = new Tuple<int, int>(here.Item1, here.Item2 + 2);
+                        map[here.Item2][here.Item1] = 0;
+                        map[here.Item2-1][here.Item1] = 0;
                         break;
                     case 2:
                         here = new Tuple<int, int>(here.Item1, here.Item2 - 2);
+                        map[here.Item2][here.Item1] = 0;
+                        map[here.Item2+1][here.Item1] = 0;
                         break;
                     case 3:
                         here = new Tuple<int, int>(here.Item1 + 2, here.Item2);
+                        map[here.Item2][here.Item1] = 0;
+                        map[here.Item2][here.Item1-1] = 0;
                         break;
                     case 4:
                         here = new Tuple<int, int>(here.Item1 - 2, here.Item2);
+                        map[here.Item2][here.Item1] = 0;
+                        map[here.Item2][here.Item1+1] = 0;
                         break;
                 }
-                map[here.Item2][here.Item1] = 0;
-                int srodeky = (path[path.Count - step - 1].Item2 + here.Item2) / 2;
-                int srodekx = (path[path.Count - step - 1].Item1 + here.Item1) / 2;
-                map[srodeky][srodekx] = 0;
             }
         }
         //LOOP of actions
@@ -136,8 +141,6 @@ public class MapMazeRoom
             move();
             check();
         }
-        //EXTARS
-
         //RETURN
         return map;
     }
