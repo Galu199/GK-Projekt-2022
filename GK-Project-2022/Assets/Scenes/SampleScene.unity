@@ -280,10 +280,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staminaBar: {fileID: 193114816}
   playerFPS: {fileID: 207856551}
-  maxStamina: 600
+  maxStamina: 100
   curStamina: 0
-  gainStamina: 1
-  loseStamina: 3
+  gainStamina: 10
+  loseStamina: 30
 --- !u!136 &207856555
 CapsuleCollider:
   m_ObjectHideFlags: 0

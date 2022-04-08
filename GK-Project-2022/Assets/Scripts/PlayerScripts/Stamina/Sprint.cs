@@ -7,8 +7,8 @@ public class Sprint : MonoBehaviour
 {
     public Image staminaBar;
     public UnityStandardAssets.Characters.FirstPerson.FirstPersonController playerFPS;
-    public int maxStamina = 100;
-    public int curStamina = 100;
+    public float maxStamina = 100;
+    public float curStamina = 100;
     public int gainStamina = 1;
     public int loseStamina = 1;
 
@@ -16,15 +16,15 @@ public class Sprint : MonoBehaviour
     {
         if (playerFPS.m_IsWalking && curStamina <= maxStamina)
         {
-            curStamina += gainStamina;
+            curStamina += (gainStamina * Time.deltaTime);
             staminaBar.fillAmount = (float)curStamina / maxStamina;
         }
-        else if (!playerFPS.m_IsWalking && curStamina >= loseStamina)
+        else if (!playerFPS.m_IsWalking && curStamina >= loseStamina * Time.deltaTime)
         {
-            curStamina -= loseStamina;
+            curStamina -= (loseStamina * Time.deltaTime);
             staminaBar.fillAmount = (float)curStamina / maxStamina;
         }
-        if (curStamina < loseStamina)
+        if (curStamina < loseStamina * Time.deltaTime)
             playerFPS.m_RunSpeed = playerFPS.m_WalkSpeed;
         else 
             playerFPS.m_RunSpeed = playerFPS.m_WalkSpeed * 2;
