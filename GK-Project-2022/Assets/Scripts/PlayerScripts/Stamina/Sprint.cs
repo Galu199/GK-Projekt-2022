@@ -5,24 +5,24 @@ using UnityEngine.UI;
 
 public class Sprint : MonoBehaviour
 {
-    public UnityStandardAssets.Characters.FirstPerson.FirstPersonController playerFPS;
     public Image staminaBar;
-    public float maxStamina = 100;
-    public float curStamina = 100;
-    public float gainStamina = 1f;
-    public float loseStamina = 1f;
+    public UnityStandardAssets.Characters.FirstPerson.FirstPersonController playerFPS;
+    public int maxStamina = 100;
+    public int curStamina = 100;
+    public int gainStamina = 1;
+    public int loseStamina = 1;
 
     void Update()
     {
         if (playerFPS.m_IsWalking && curStamina <= maxStamina)
         {
             curStamina += gainStamina;
-            staminaBar.fillAmount = curStamina / maxStamina;
+            staminaBar.fillAmount = (float)curStamina / maxStamina;
         }
         else if (!playerFPS.m_IsWalking && curStamina >= loseStamina)
         {
             curStamina -= loseStamina;
-            staminaBar.fillAmount = curStamina / maxStamina;
+            staminaBar.fillAmount = (float)curStamina / maxStamina;
         }
         if (curStamina < loseStamina)
             playerFPS.m_RunSpeed = playerFPS.m_WalkSpeed;

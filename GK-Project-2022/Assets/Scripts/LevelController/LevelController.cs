@@ -8,8 +8,8 @@ public class LevelController : MonoBehaviour
     public NavMeshSurface navMeshSurface;
     public GameObject player;
     public GameObject enemy;
-    public GameObject prefabWall;
     public GameObject WallsContainer;
+    public GameObject prefabWall;
     public int mapY = 10;
     public int mapX = 10;
     public int spawnX = 1;
@@ -40,11 +40,24 @@ public class LevelController : MonoBehaviour
 
                 break;
         }
-        MovePlayer();
-        MoveEnemy();
+        MovePlayerToSpawn();
+        MoveEnemyToRandomSpawn();
         navMeshSurface.BuildNavMesh();
         map = optimizeMapWalls.Generate2(mapX, mapY, map);
         SpawnMap();
+    }
+
+    public void MovePlayerToSpawn()
+    {
+        player.SetActive(false);
+        player.transform.position = (new Vector3(spawnX * prefabWall.transform.localScale.x, 1.5f, spawnY * prefabWall.transform.localScale.z));
+        player.SetActive(true);
+    }
+
+    public void MoveEnemyToRandomSpawn()
+    {
+        var freefield = RandomFreeField.Generate(mapX, mapY, map);
+        enemy.transform.position = (new Vector3(freefield.Item1* prefabWall.transform.localScale.x, 1.5f, freefield.Item2* prefabWall.transform.localScale.z));
     }
 
     private void SpawnMap()
@@ -56,19 +69,6 @@ public class LevelController : MonoBehaviour
                 if (map[y][x] == 1) GenerateWall(x, y);
             }
         }
-    }
-
-    private void MovePlayer()
-    {
-        player.SetActive(false);
-        player.transform.position = (new Vector3(spawnX * prefabWall.transform.localScale.x, 1.5f, spawnY * prefabWall.transform.localScale.z));
-        player.SetActive(true);
-    }
-
-    private void MoveEnemy()
-    {
-        var freefield = RandomFreeField.Generate(mapX, mapY, map);
-        enemy.transform.position = (new Vector3(freefield.Item1* prefabWall.transform.localScale.x, 1.5f, freefield.Item2* prefabWall.transform.localScale.z));
     }
 
     private void GenerateWall(int x, int z)
