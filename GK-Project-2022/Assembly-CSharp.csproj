@@ -74,6 +74,8 @@
     <Compile Include="Assets\Scripts\PlayerScripts\Health\Health.cs" />
     <Compile Include="Assets\Scripts\LevelController\RandomFreeField.cs" />
     <Compile Include="Assets\Scripts\AIController\AIController.cs" />
+    <Compile Include="Assets\Scripts\ObjectsScripts\ElevatorButton.cs" />
+    <Compile Include="Assets\Scripts\GameController\SelectionManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Terrain\readme.txt" />

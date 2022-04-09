@@ -5,10 +5,11 @@ public class RandomFreeField
 {
     public static Tuple<int, int> Generate(List<List<int>> map)
     {
+        //IMPORTANT RULES
+        if (map == null) return null;
         //VARIABLES
         var result = new Tuple<int, int>(0, 0);
         var freeFields = new List<Tuple<int, int>>();
-        freeFields.Add(result);
         //CHECK FREE FIELDS
         for (int y = 0; y < map.Count; y++)
         {

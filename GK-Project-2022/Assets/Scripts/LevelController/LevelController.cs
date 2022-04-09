@@ -38,7 +38,7 @@ public class LevelController : MonoBehaviour
         }
         MovePlayerToSpawn();
         MoveEnemyToRandomSpawn();
-        navMeshSurface.BuildNavMesh();
+        //navMeshSurface.BuildNavMesh();
         mapOptimized = optimizeMapWalls.Generate3(map);
         SpawnMap(mapOptimized);
     }
@@ -52,6 +52,7 @@ public class LevelController : MonoBehaviour
 
     public void MoveEnemyToRandomSpawn()
     {
+        if (map == null) return;
         foreach (var enemy in aiController.enemies)
         {
             var freefield = RandomFreeField.Generate(map);
