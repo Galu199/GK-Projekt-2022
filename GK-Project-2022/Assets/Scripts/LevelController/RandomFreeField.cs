@@ -3,15 +3,16 @@ using System.Collections.Generic;
 
 public class RandomFreeField
 {
-    public static Tuple<int, int> Generate(int sizeX, int sizeY, List<List<int>> map)
+    public static Tuple<int, int> Generate(List<List<int>> map)
     {
         //VARIABLES
         var result = new Tuple<int, int>(0, 0);
         var freeFields = new List<Tuple<int, int>>();
+        freeFields.Add(result);
         //CHECK FREE FIELDS
-        for (int y = 0; y < sizeY; y++)
+        for (int y = 0; y < map.Count; y++)
         {
-            for (int x = 0; x < sizeX; x++)
+            for (int x = 0; x < map[y].Count; x++)
             {
                 if (map[y][x] == 0)
                     freeFields.Add(new Tuple<int, int>(x, y));

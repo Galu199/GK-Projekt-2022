@@ -58,21 +58,22 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\LevelController\LevelController.cs" />
     <Compile Include="Assets\Scripts\LevelController\MapTunnelingRoom.cs" />
-    <Compile Include="Assets\Scripts\NavMeshComponents\NavMeshLink.cs" />
-    <Compile Include="Assets\Scripts\NavMeshComponents\NavMeshSurface.cs" />
+    <Compile Include="Assets\Scripts\AIController\NavMeshComponents\NavMeshLink.cs" />
+    <Compile Include="Assets\Scripts\AIController\NavMeshComponents\NavMeshSurface.cs" />
+    <Compile Include="Assets\Scripts\AIController\EnemyScripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\LevelController\LevelControllerInspector.cs" />
     <Compile Include="Assets\Scripts\ObjectsScripts\Wall.cs" />
     <Compile Include="Assets\Scripts\LevelController\MapPerlinRoom.cs" />
     <Compile Include="Assets\Scripts\LevelController\optimizeMapWalls.cs" />
     <Compile Include="Assets\Scripts\LevelController\MapMazeRoom.cs" />
-    <Compile Include="Assets\Scripts\NavMeshComponents\NavMeshModifier.cs" />
-    <Compile Include="Assets\Scripts\EnemyScripts\StandardEnemyBehaviour.cs" />
-    <Compile Include="Assets\Scripts\NavMeshComponents\NavMeshModifierVolume.cs" />
-    <Compile Include="Assets\Scripts\PlayerScripts\Stamina\Sprint.cs" />
-    <Compile Include="Assets\Scripts\LevelController\RandomFreeField.cs" />
-    <Compile Include="Assets\Scripts\PlayerScripts\Health\Health.cs" />
-    <Compile Include="Assets\Scripts\EnemyScripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\GameController\GameController.cs" />
+    <Compile Include="Assets\Scripts\AIController\NavMeshComponents\NavMeshModifier.cs" />
+    <Compile Include="Assets\Scripts\AIController\EnemyScripts\StandardEnemyBehaviour.cs" />
+    <Compile Include="Assets\Scripts\AIController\NavMeshComponents\NavMeshModifierVolume.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\Stamina\Sprint.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\Health\Health.cs" />
+    <Compile Include="Assets\Scripts\LevelController\RandomFreeField.cs" />
+    <Compile Include="Assets\Scripts\AIController\AIController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Terrain\readme.txt" />

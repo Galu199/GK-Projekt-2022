@@ -5,10 +5,12 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public LevelController levelController;
+    public AIController aiController;
 
     void Start()
     {
-        
+        aiController.SpawnEnemies();
+        levelController.GenerateMap();
     }
 
     void Update()
@@ -16,7 +18,7 @@ public class GameController : MonoBehaviour
         if (levelController.player.GetComponent<Health>().CurrentHealth <= 0)
         {
             levelController.MovePlayerToSpawn();
-            //levelController.MoveEnemyToRandomSpawn();//TO DO
+            levelController.MoveEnemyToRandomSpawn();
             levelController.player.GetComponent<Health>().Reset();
         }
     }

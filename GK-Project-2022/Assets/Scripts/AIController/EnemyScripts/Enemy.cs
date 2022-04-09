@@ -26,4 +26,14 @@ public class Enemy : MonoBehaviour
         readyToAtack = false;
     }
 
+    public void Teleport(Vector3 position)
+    {
+        GetComponent<Transform>().position = position;
+    }
+
+    public void Delete()
+    {
+        Destroy(gameObject);
+    }
+
 }
