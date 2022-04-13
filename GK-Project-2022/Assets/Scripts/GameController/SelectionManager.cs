@@ -18,9 +18,21 @@ public class SelectionManager : MonoBehaviour
             if (Physics.Raycast(ray, out hit, maxReachLength))
             {
                 var selection = hit.transform;
+                //Debug.Log(selection.name);
                 if (selection.GetComponent<ElevatorButton>() != null)
                 {
                     elevatorButtonPressed = true;
+                }
+                else
+                if (selection.GetComponent<ElevatorPower>() != null)
+                {
+                    elevatorPowerPressed = true;
+                    selection.GetComponent<Animator>().SetBool("TurnOn", true);
+                }
+                else
+                if (false)
+                {
+                    
                 }
             }
         }

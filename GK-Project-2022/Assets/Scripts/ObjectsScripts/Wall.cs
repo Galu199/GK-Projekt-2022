@@ -6,7 +6,11 @@ public class Wall : MonoBehaviour
 {
     public void Teleport(Vector3 position)
     {
-        GetComponent<Transform>().position = position;
+        transform.position = position;
+    }
+    public void Rotate(Vector3 rotation)
+    {
+        transform.eulerAngles = rotation;
     }
     public void Delete()
     {

@@ -69,13 +69,16 @@
     <Compile Include="Assets\Scripts\GameController\GameController.cs" />
     <Compile Include="Assets\Scripts\AIController\NavMeshComponents\NavMeshModifier.cs" />
     <Compile Include="Assets\Scripts\AIController\EnemyScripts\StandardEnemyBehaviour.cs" />
+    <Compile Include="Assets\Scripts\GameController\SelectionManager.cs" />
+    <Compile Include="Assets\Scripts\AIController\AIController.cs" />
     <Compile Include="Assets\Scripts\AIController\NavMeshComponents\NavMeshModifierVolume.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Stamina\Sprint.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Health\Health.cs" />
     <Compile Include="Assets\Scripts\LevelController\RandomFreeField.cs" />
-    <Compile Include="Assets\Scripts\AIController\AIController.cs" />
     <Compile Include="Assets\Scripts\ObjectsScripts\ElevatorButton.cs" />
-    <Compile Include="Assets\Scripts\GameController\SelectionManager.cs" />
+    <Compile Include="Assets\Scripts\ObjectsScripts\ElevatorPower.cs" />
+    <Compile Include="Assets\Scripts\LevelController\MapRoom.cs" />
+    <Compile Include="Assets\Scripts\LevelController\AddObjWallToMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Terrain\readme.txt" />

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapPerlinRoom : MonoBehaviour
+public class MapRoom 
 {
     static public List<List<int>> Generate(int sizeX = 4, int sizeY = 4, int spawnX = 1, int spawnY = 1, int seed = 0)
     {
@@ -16,7 +16,10 @@ public class MapPerlinRoom : MonoBehaviour
             map.Add(new List<int>());
             for (int x = 0; x < sizeX; x++)
             {
-                map[y].Add(1);
+                if (x == 0 || y == 0 || y == sizeY - 1 || x == sizeX - 1)
+                    map[y].Add(1);
+                else
+                    map[y].Add(0);
             }
         }
         //RETURN

@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     public int level = 0;
     public bool GenerateEnemies = true;
     public bool GenerateMap = true;
+    public bool PowerOn = false;
 
     private void Start()
     {
@@ -25,15 +26,22 @@ public class GameController : MonoBehaviour
             levelController.player.GetComponent<Health>().Reset();
         }
 
-        if(selectionManager.elevatorButtonPressed && selectionManager.elevatorPowerPressed)
+        if (selectionManager.elevatorButtonPressed)
         {
-            GenerateLevel(level++);
             selectionManager.elevatorButtonPressed = false;
-            selectionManager.elevatorPowerPressed = false;
+            if (PowerOn)
+            {
+                PowerOn = false;
+                foreach (var item in FindObjectsOfType<ElevatorButton>()) item.TogglePower(PowerOn);
+                GenerateLevel(level++);
+            }
         }
-        else
+
+        if (selectionManager.elevatorPowerPressed)
         {
-            selectionManager.elevatorButtonPressed = false;
+            selectionManager.elevatorPowerPressed = false;
+            PowerOn = true;
+            foreach (var item in FindObjectsOfType<ElevatorButton>()) item.TogglePower(PowerOn);
         }
     }
 

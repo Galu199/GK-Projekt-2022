@@ -1381,6 +1381,7 @@ MonoBehaviour:
   level: 0
   GenerateEnemies: 1
   GenerateMap: 1
+  PowerOn: 0
 --- !u!114 &1761414107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1580,13 +1581,15 @@ MonoBehaviour:
   aiController: {fileID: 634931466}
   player: {fileID: 207856547}
   prefabWall: {fileID: 558021469054797723, guid: 85f24cf01791644418a498e6950790c5, type: 3}
+  prefabWallElevator: {fileID: 558021469054797723, guid: 52fe1c5c4dd44f042a69a8c6a7ada2a4, type: 3}
+  prefabWallPowerSwitch: {fileID: 558021469054797723, guid: c7d38cbe269b20f4ebf83c43cea5569c, type: 3}
   WallsContainer: {fileID: 1370678318}
   mapY: 10
   mapX: 10
   spawnX: 1
   spawnY: 1
   seed: 0
-  MapGenNumber: 1
+  MapGenNumber: 2
 --- !u!1 &1877160672
 GameObject:
   m_ObjectHideFlags: 0
