@@ -1,11 +1,12 @@
+using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class StandardEnemyBehaviour : MonoBehaviour
 {
-    NavMeshAgent navMesh;
-
     Transform player;
 
     //Collider[] goalToKill;
@@ -17,6 +18,11 @@ public class StandardEnemyBehaviour : MonoBehaviour
     //walkin'
     public Vector3 goal;
     bool hasGoal;
+
+    [SerializeField] float speed = 5;
+    Vector3[] path;
+    int pathIndex;
+
     [SerializeField] float sightRange = 50;
     //bool hastarget = false;
     [SerializeField] float stoppingRange = 1;
@@ -29,21 +35,16 @@ public class StandardEnemyBehaviour : MonoBehaviour
     //float reloading = 1;
     //[SerializeField] bool canShoot = true;
 
-    void Start()
+    void Awake()
     {
-        navMesh = GetComponent<NavMeshAgent>();
-
+        player = GameObject.Find("FPSController").transform;
         if (sightRange < attackRange)
             Debug.LogError("sight too short/range too long");
     }
 
-    private void Awake()
+    private void Start()
     {
-        Collider []goalToKill = Physics.OverlapSphere(transform.position, 999999999999, isPlayer);
-        if (goalToKill.Length > 0)
-        {
-            player = goalToKill[0].transform;
-        }
+        
     }
 
     void Update()
@@ -64,6 +65,8 @@ public class StandardEnemyBehaviour : MonoBehaviour
         }
     }
 
+
+
     void Wander()
     {
         if (!hasGoal)
@@ -79,13 +82,39 @@ public class StandardEnemyBehaviour : MonoBehaviour
             return;
         }
 
-        navMesh.SetDestination(goal);
+        PathManager.RequestPath(transform.position, goal, OnPathFound);
     }
 
     void Follow()
     {
-        //Debug.Log("Following");
-        navMesh.SetDestination(player.position);
+        PathManager.RequestPath(transform.position, player.position, OnPathFound);
+    }
+
+    void OnPathFound(Vector3[] newPath, bool pathSuccesfull)
+    {
+        if (pathSuccesfull)
+        {
+            pathIndex = 0;
+            path = newPath;
+            StartCoroutine(FollowPath());
+        }
+    }
+
+    IEnumerator FollowPath()
+    {
+        Vector3 currentWaypoint = path[0];
+        while (Vector3.Distance(transform.position, goal) < stoppingRange)
+        {
+            pathIndex++;
+            if (pathIndex >= path.Length)
+            {
+                yield break;
+            }
+            currentWaypoint = path[pathIndex];
+        }
+        transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
+
+        yield return null;
     }
 
     void Attack()
@@ -98,23 +127,11 @@ public class StandardEnemyBehaviour : MonoBehaviour
         float randXCord = Random.Range(-sightRange, sightRange);
         float randZCord = Random.Range(-sightRange, sightRange);
 
-        //goalToKill = Physics.OverlapSphere(transform.position, sightRange, isPlayer);
+        goal = new Vector3(transform.position.x + randXCord, 0, transform.position.z + randZCord);
 
-        //if (goalToKill.Length > 0)
-        //{
-        //    player = goalToKill[0].transform;
-        //    hasGoal = true;
-        //}
-
-        //else
+        if (!Physics.Raycast(goal, -Vector3.up, 2f, isGround))
         {
-
-            goal = new Vector3(transform.position.x + randXCord, 0, transform.position.z + randZCord);
-
-            if (!Physics.Raycast(goal, -Vector3.up, 2f, isGround))
-            {
-                hasGoal = true;
-            }
+            hasGoal = true;
         }
 
     }

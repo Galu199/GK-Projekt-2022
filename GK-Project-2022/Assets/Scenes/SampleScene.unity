@@ -313,9 +313,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2295331127819304678, guid: b15c393736a3f644ea9773b0e150365a, type: 3}
-      propertyPath: m_Radius
-      value: 0.5
+    - target: {fileID: 2295331127819304675, guid: b15c393736a3f644ea9773b0e150365a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2295331127819304679, guid: b15c393736a3f644ea9773b0e150365a, type: 3}
       propertyPath: m_Height
@@ -331,17 +331,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b15c393736a3f644ea9773b0e150365a, type: 3}
---- !u!114 &475925996 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4629267674153797822, guid: 670ba4f1fd5bb4a4abd89073fcb5d7a7, type: 3}
-  m_PrefabInstance: {fileID: 1123693696587052182}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd005520cc669d640acc3e53b72dd4c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &579606135
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,7 +788,7 @@ GameObject:
   - component: {fileID: 1480374413}
   - component: {fileID: 1480374412}
   - component: {fileID: 1480374411}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CubeFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -963,6 +952,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1856189071}
   - component: {fileID: 1856189072}
+  - component: {fileID: 1856189073}
+  - component: {fileID: 1856189074}
+  - component: {fileID: 1856189075}
   m_Layer: 0
   m_Name: ControllerLevel
   m_TagString: Untagged
@@ -999,7 +991,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc37c3306a62774ab3961378037d6ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navMeshSurface: {fileID: 475925996}
   player: {fileID: 207856547}
   enemy: {fileID: 1699397920}
   prefabWall: {fileID: 558021469054797723, guid: 85f24cf01791644418a498e6950790c5, type: 3}
@@ -1008,6 +999,52 @@ MonoBehaviour:
   mapX: 100
   spawnX: 50
   spawnY: 50
+  onMapConstructed:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1856189073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856189070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b68210613a3c54d40862cc62fe56d34f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelController: {fileID: 0}
+  isWall:
+    serializedVersion: 2
+    m_Bits: 128
+  gridWorldSize: {x: 100, y: 100}
+  nodeRadius: 0.25
+  nodeSpawnDistance: 0
+--- !u!114 &1856189074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856189070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39c2dad46767fa64dbd0358724d521d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1856189075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856189070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a48a14efe1221a6409a3df13229be887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1877160672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1149,7 +1186,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &2065700274
 BoxCollider:
   m_ObjectHideFlags: 0

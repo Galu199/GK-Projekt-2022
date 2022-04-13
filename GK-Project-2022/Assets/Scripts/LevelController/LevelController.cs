@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+using UnityEngine.Events;
+using System;
 
 public class LevelController : MonoBehaviour
 {
-    [SerializeField] NavMeshSurface navMeshSurface;
 
     public GameObject player;
     public GameObject enemy;
@@ -18,14 +18,16 @@ public class LevelController : MonoBehaviour
     private List<List<int>> map = new List<List<int>>();//2d map container
     private List<Wall> walls = new List<Wall>();//List of Walls
 
+    public UnityEvent onMapConstructed;
+
     private void Start()
     {
         map = MapTunnelingRoom.Generate(mapX, mapY, spawnX, spawnY);
-        navMeshSurface.BuildNavMesh();
         MovePlayer();
         MoveEnemy();
         map = optimizeMapWalls.Generate(mapX, mapY, map);
         SpawnMap();
+        onMapConstructed.Invoke();
     }
 
     public void SpawnMap()
