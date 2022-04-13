@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-
+        GenerateLevel(level++);
     }
 
     private void Update()

@@ -1589,7 +1589,7 @@ MonoBehaviour:
   spawnX: 1
   spawnY: 1
   seed: 0
-  MapGenNumber: 2
+  MapGenNumber: 0
 --- !u!1 &1877160672
 GameObject:
   m_ObjectHideFlags: 0
