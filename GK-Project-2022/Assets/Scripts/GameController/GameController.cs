@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     public LevelController levelController;
     public AIController aiController;
     public SelectionManager selectionManager;
+    public GameObject player;
     public int level = 0;
     public bool GenerateEnemies = true;
     public bool GenerateMap = true;
@@ -42,6 +43,13 @@ public class GameController : MonoBehaviour
             selectionManager.elevatorPowerPressed = false;
             PowerOn = true;
             foreach (var item in FindObjectsOfType<ElevatorButton>()) item.TogglePower(PowerOn);
+        }
+
+        if (selectionManager.clickedItem != null)
+        {
+            player.GetComponent<Equipment>().listOfItems.Add(selectionManager.clickedItem);
+            selectionManager.clickedItem.SetActivity(false);
+            selectionManager.clickedItem = null;
         }
     }
 

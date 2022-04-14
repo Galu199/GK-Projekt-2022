@@ -8,7 +8,8 @@ enum objectId
     Air,
     Wall,
     WallElevator,
-    WallPowerSwitch
+    WallPowerSwitch,
+    ItemCoin
 }
 
 public class LevelController : MonoBehaviour
@@ -20,8 +21,10 @@ public class LevelController : MonoBehaviour
     public GameObject prefabWall;
     public GameObject prefabWallElevator;
     public GameObject prefabWallPowerSwitch;
+    public GameObject prefabCoin;
 
     public GameObject WallsContainer;
+    public GameObject ItemContainer;
 
     public int mapY = 10;
     public int mapX = 10;
@@ -33,6 +36,7 @@ public class LevelController : MonoBehaviour
     private List<List<int>> map = new List<List<int>>();//2d map container
     private List<List<int>> mapOptimized = null;//2d map container ready to render
     private List<Wall> walls = new List<Wall>();//List of Walls
+    private List<Item> items = new List<Item>();//List of Walls
 
     public void GenerateMap()
     {
@@ -52,8 +56,9 @@ public class LevelController : MonoBehaviour
         }
         MovePlayerToSpawn();
         MoveEnemyToRandomSpawn();
-        map = AddObjWallToMap.Generate(map, (int)objectId.WallElevator);
-        map = AddObjWallToMap.Generate(map, (int)objectId.WallPowerSwitch);
+        AddObjWallToMap.Generate2(ref map, (int)objectId.WallElevator);
+        AddObjWallToMap.Generate2(ref map, (int)objectId.WallPowerSwitch);
+        if (Random.Range(0, 2) % 2 == 0) AddItemToMap.Generate2(ref map, (int)objectId.ItemCoin);
         mapOptimized = optimizeMapWalls.Generate3(map);
         SpawnMap(mapOptimized);
         //navMeshSurface.BuildNavMesh();
@@ -100,6 +105,9 @@ public class LevelController : MonoBehaviour
                         GenerateWall(prefabWallPowerSwitch, x, y);
                         RotateObject(walls[walls.Count - 1], x, y);
                         break;
+                    case (int)objectId.ItemCoin:
+                        GenerateItem(prefabCoin, x, y);
+                        break;
                 }
             }
         }
@@ -110,17 +118,25 @@ public class LevelController : MonoBehaviour
         GameObject Obj = Instantiate(prefab, WallsContainer.transform);
         var item = Obj.GetComponent<Wall>();
         walls.Add(item);
-        item.Teleport(new Vector3(x * Obj.transform.localScale.x, 2, z * Obj.transform.localScale.z));
+        item.Teleport(new Vector3(x * prefabWall.transform.localScale.x, prefabWall.transform.position.y, z * prefabWall.transform.localScale.z));
+    }
+    
+    private void GenerateItem(GameObject prefab, int x, int z)
+    {
+        GameObject Obj = Instantiate(prefab, ItemContainer.transform);
+        var item = Obj.GetComponent<Item>();
+        items.Add(item);
+        item.Teleport(new Vector3(x * prefabWall.transform.localScale.x, Obj.transform.position.y, z * prefabWall.transform.localScale.z));
     }
 
     private void RotateObject(Wall obj, int x, int y)
     {
-        if (y < mapY-1 && map[y + 1][x] == 0)
+        if (y < mapY - 1 && map[y + 1][x] == 0)
         {
             //do nothing
         }
         else
-        if (x < mapX-1 && map[y][x + 1] == 0)
+        if (x < mapX - 1 && map[y][x + 1] == 0)
         {
             obj.Rotate(new Vector3(0, 90.0f, 0));
         }

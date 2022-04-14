@@ -9,6 +9,7 @@ public class SelectionManager : MonoBehaviour
     public float maxReachLength = 1.0f;
     public bool elevatorButtonPressed = false;
     public bool elevatorPowerPressed = false;
+    public Item clickedItem = null;
 
     private void Update()
     {
@@ -26,13 +27,18 @@ public class SelectionManager : MonoBehaviour
                 else
                 if (selection.GetComponent<ElevatorPower>() != null)
                 {
-                    elevatorPowerPressed = true;
                     selection.GetComponent<Animator>().SetBool("TurnOn", true);
+                    elevatorPowerPressed = true;
+                }
+                else
+                if (selection.GetComponent<Item>() != null)
+                {
+                    clickedItem = selection.GetComponent<Item>();
                 }
                 else
                 if (false)
                 {
-                    
+
                 }
             }
         }

@@ -254,6 +254,19 @@ MonoBehaviour:
   healthbar: {fileID: 1749747863}
   MaxHealth: 100
   CurrentHealth: 100
+--- !u!114 &207856550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207856547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dae90fd5c28381a408624552e92a64e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listOfItems: []
 --- !u!114 &207856551 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
@@ -560,6 +573,36 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &597160390
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 597160391}
+  m_Layer: 0
+  m_Name: ItemContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &597160391
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597160390}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1856189071}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &634931464
 GameObject:
   m_ObjectHideFlags: 0
@@ -1378,6 +1421,7 @@ MonoBehaviour:
   levelController: {fileID: 1856189072}
   aiController: {fileID: 634931466}
   selectionManager: {fileID: 1761414107}
+  player: {fileID: 207856547}
   level: 0
   GenerateEnemies: 1
   GenerateMap: 1
@@ -1397,6 +1441,7 @@ MonoBehaviour:
   maxReachLength: 1
   elevatorButtonPressed: 0
   elevatorPowerPressed: 0
+  clickedItem: {fileID: 0}
 --- !u!1 &1769842933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,6 +1607,7 @@ Transform:
   - {fileID: 2065700277}
   - {fileID: 1480374414}
   - {fileID: 1370678319}
+  - {fileID: 597160391}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1583,7 +1629,9 @@ MonoBehaviour:
   prefabWall: {fileID: 558021469054797723, guid: 85f24cf01791644418a498e6950790c5, type: 3}
   prefabWallElevator: {fileID: 558021469054797723, guid: 52fe1c5c4dd44f042a69a8c6a7ada2a4, type: 3}
   prefabWallPowerSwitch: {fileID: 558021469054797723, guid: c7d38cbe269b20f4ebf83c43cea5569c, type: 3}
+  prefabCoin: {fileID: 412719177431594169, guid: 600a67e5c27fe03498256033c20d0313, type: 3}
   WallsContainer: {fileID: 1370678318}
+  ItemContainer: {fileID: 597160390}
   mapY: 10
   mapX: 10
   spawnX: 1

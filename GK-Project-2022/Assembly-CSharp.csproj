@@ -56,29 +56,33 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\LevelController\MapRoom.cs" />
     <Compile Include="Assets\Scripts\LevelController\LevelController.cs" />
     <Compile Include="Assets\Scripts\LevelController\MapTunnelingRoom.cs" />
+    <Compile Include="Assets\Scripts\ObjectsScripts\ElevatorPower.cs" />
     <Compile Include="Assets\Scripts\AIController\NavMeshComponents\NavMeshLink.cs" />
     <Compile Include="Assets\Scripts\AIController\NavMeshComponents\NavMeshSurface.cs" />
     <Compile Include="Assets\Scripts\AIController\EnemyScripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\LevelController\LevelControllerInspector.cs" />
     <Compile Include="Assets\Scripts\ObjectsScripts\Wall.cs" />
     <Compile Include="Assets\Scripts\LevelController\MapPerlinRoom.cs" />
+    <Compile Include="Assets\Scripts\ObjectsScripts\Coin.cs" />
     <Compile Include="Assets\Scripts\LevelController\optimizeMapWalls.cs" />
     <Compile Include="Assets\Scripts\LevelController\MapMazeRoom.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\Equipment.cs" />
     <Compile Include="Assets\Scripts\GameController\GameController.cs" />
     <Compile Include="Assets\Scripts\AIController\NavMeshComponents\NavMeshModifier.cs" />
     <Compile Include="Assets\Scripts\AIController\EnemyScripts\StandardEnemyBehaviour.cs" />
+    <Compile Include="Assets\Scripts\LevelController\AddObjWallToMap.cs" />
     <Compile Include="Assets\Scripts\GameController\SelectionManager.cs" />
     <Compile Include="Assets\Scripts\AIController\AIController.cs" />
     <Compile Include="Assets\Scripts\AIController\NavMeshComponents\NavMeshModifierVolume.cs" />
-    <Compile Include="Assets\Scripts\PlayerScripts\Stamina\Sprint.cs" />
-    <Compile Include="Assets\Scripts\PlayerScripts\Health\Health.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\Sprint.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\Health.cs" />
     <Compile Include="Assets\Scripts\LevelController\RandomFreeField.cs" />
     <Compile Include="Assets\Scripts\ObjectsScripts\ElevatorButton.cs" />
-    <Compile Include="Assets\Scripts\ObjectsScripts\ElevatorPower.cs" />
-    <Compile Include="Assets\Scripts\LevelController\MapRoom.cs" />
-    <Compile Include="Assets\Scripts\LevelController\AddObjWallToMap.cs" />
+    <Compile Include="Assets\Scripts\ObjectsScripts\Item.cs" />
+    <Compile Include="Assets\Scripts\LevelController\AddItemToMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Terrain\readme.txt" />
