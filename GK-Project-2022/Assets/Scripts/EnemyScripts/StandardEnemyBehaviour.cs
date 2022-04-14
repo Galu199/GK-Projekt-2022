@@ -94,6 +94,7 @@ public class StandardEnemyBehaviour : MonoBehaviour
     {
         if (pathSuccesfull)
         {
+            path = null;
             pathIndex = 0;
             path = newPath;
             StartCoroutine(FollowPath());

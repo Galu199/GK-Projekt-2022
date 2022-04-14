@@ -30,7 +30,7 @@ public class Pathfinder : MonoBehaviour
         Vector3[] waypoints = new Vector3[0];
         bool succesful = false;
 
-        if (startNode.isObstructed && targetNode.isObstructed)
+        if (/*!startNode.isObstructed && */!targetNode.isObstructed)
         {
             openList.Add(startNode);
 
@@ -58,7 +58,7 @@ public class Pathfinder : MonoBehaviour
 
                 foreach (Node neighborNode in grid.GetNeighboringNodes(currentNode))
                 {
-                    if (neighborNode.isObstructed && !closedList.Contains(neighborNode))
+                    if (!neighborNode.isObstructed && !closedList.Contains(neighborNode))
                     {
                         int moveCost = currentNode.gCost + GetManhattanDistance(currentNode, neighborNode);
 
@@ -88,17 +88,20 @@ public class Pathfinder : MonoBehaviour
     Vector3[] GetFinalPath(Node _startingNode, Node _endNode)
     {
         List<Node> finalPath = new List<Node>();
+        //List<Vector3> finalPath2 = new List<Vector3>();
         Node currentNode = _endNode;
 
         while(currentNode != _startingNode)
         {
             finalPath.Add(currentNode);
+            //finalPath2.Add(currentNode.position);
             currentNode = currentNode.parent;
         }
 
         finalPath.Reverse();
         grid.finalPath = finalPath;
         Vector3[] waypoints = SimplifyPath(finalPath);
+        //Vector3[] waypoints = finalPath2.ToArray();
 
         return waypoints;
     }
@@ -111,7 +114,7 @@ public class Pathfinder : MonoBehaviour
         for(int i = 1; i < path.Count; i++)
         {
             Vector2 directionNew = new Vector2(path[i - 1].gridX - path[i].gridX, path[i - 1].gridY - path[i].gridY);
-            //if(directionNew != directionOld)
+            if(directionNew != directionOld)
             {
                 waypoints.Add(path[i].position);
             }

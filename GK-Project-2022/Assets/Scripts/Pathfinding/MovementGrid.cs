@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.Events;
 
 public class MovementGrid : MonoBehaviour
@@ -22,7 +23,6 @@ public class MovementGrid : MonoBehaviour
 
     Node[,] grid;
     public List<Node> finalPath;
-    //public List<Node> finalPath;
 
     float nodeDiameter;
     int sizeX;
@@ -47,8 +47,6 @@ public class MovementGrid : MonoBehaviour
 
     void StartBuildingGrid()
     {
-        //Vector3 spawnPoint = new Vector3(levelController.mapX, 0, levelController.mapY);
-        //transform.Translate(spawnPoint);
         StartCoroutine(BuildGrid());
     }
 
@@ -66,12 +64,12 @@ public class MovementGrid : MonoBehaviour
                 Vector3 worldPoint = bottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius)
                     + Vector3.forward * (y * nodeDiameter + nodeRadius);
 
-                bool wall = true;
+                bool wall = false;
                 /*Physics.CheckBox(worldPoint, new Vector3(nodeRadius/2, nodeRadius / 2, nodeRadius / 2),
                     Quaternion.identity, isWall);*/
                 if(Physics.CheckSphere(worldPoint, nodeRadius, isWall))
                 {
-                    wall = false;
+                    wall = true;
                 }
 
                 grid[x, y] = new Node(wall, worldPoint, x, y);
@@ -138,7 +136,7 @@ public class MovementGrid : MonoBehaviour
         return false;
     }
 
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
 
@@ -146,13 +144,14 @@ public class MovementGrid : MonoBehaviour
         {
             foreach(Node node in grid)
             {
-                if (node.isObstructed)
+                if (node.isObstructed == false)
                 {
                     Gizmos.color = Color.white;
                 }
                 else
                 {
                     Gizmos.color = Color.yellow;
+                    Handles.Label(node.position, $"{node.gridX}, {node.gridY}");
                 }
                 
                 if(finalPath != null)
@@ -162,11 +161,10 @@ public class MovementGrid : MonoBehaviour
                         Gizmos.color = Color.red;
                     }
                 }
-                
 
                 Gizmos.DrawCube(node.position, Vector3.one * (nodeDiameter - nodeSpawnDistance));
             }
         }
-    }
+    }*/
     
 }

@@ -1019,7 +1019,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   gridWorldSize: {x: 100, y: 100}
-  nodeRadius: 0.25
+  nodeRadius: 0.5
   nodeSpawnDistance: 0
 --- !u!114 &1856189074
 MonoBehaviour:
