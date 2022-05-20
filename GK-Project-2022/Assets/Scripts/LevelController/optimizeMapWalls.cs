@@ -116,36 +116,44 @@ public class optimizeMapWalls
             map2.Add(new List<int>());
             for (int x = 0; x < sizeX; x++)
             {
-                map2[y].Add(0);
+                map2[y].Add((int)objectId.Air);
             }
         }
         //FIND WALLS
         for (int y = 0; y < indexY; y++)
         {
             if (map[y][0 + 1] == 0)
-                if (map[y][0] != 0) map2[y][0] = map[y][0];
+                if (map[y][0] >= (int)objectId.Wall) map2[y][0] = map[y][0];
         }
         for (int y = 0; y < indexY; y++)
         {
             if (map[y][indexX - 1] == 0)
-                if (map[y][indexX] != 0) map2[y][indexX] = map[y][indexX];
+                if (map[y][indexX] >= (int)objectId.Wall) map2[y][indexX] = map[y][indexX];
         }
         for (int x = 0; x < indexX; x++)
         {
             if (map[0 + 1][x] == 0)
-                if (map[0][x] != 0) map2[0][x] = map[0][x];
+                if (map[0][x] >= (int)objectId.Wall) map2[0][x] = map[0][x];
         }
         for (int x = 0; x < indexX; x++)
         {
             if (map[indexY - 1][x] == 0)
-                if (map[indexY][x] != 0) map2[indexY][x] = map[indexY][x];
+                if (map[indexY][x] >= (int)objectId.Wall) map2[indexY][x] = map[indexY][x];
         }
         for (int y = 1; y < sizeY - 1; y++)
         {
             for (int x = 1; x < sizeX - 1; x++)
             {
                 if (map[y + 1][x] == 0 || map[y - 1][x] == 0 || map[y][x + 1] == 0 || map[y][x - 1] == 0)
-                    if (map[y][x] != 0) map2[y][x] = map[y][x];
+                    if (map[y][x] >= (int)objectId.Wall) map2[y][x] = map[y][x];
+            }
+        }
+        //TRANSFER ITEMS
+        for (int y = 0; y < sizeY; y++)
+        {
+            for (int x = 0; x < sizeX; x++)
+            {
+                if (map[y][x] > (int)objectId.Air && map[y][x] < (int)objectId.Wall) map2[y][x] = map[y][x];
             }
         }
         //RETURN

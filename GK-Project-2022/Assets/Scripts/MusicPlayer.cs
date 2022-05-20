@@ -6,14 +6,15 @@ public class MusicPlayer : MonoBehaviour
 {
     public List<AudioClip> sounds;
     public AudioSource audioSource;
-    // Start is called before the first frame update
     int i = 0;
-    
-    private void Update()
+
+    void Update()
     {
-        if(!audioSource.isPlaying&&audioSource.isActiveAndEnabled)
+        if (!audioSource.isPlaying && audioSource.isActiveAndEnabled)
         {
-            if (i != sounds.Count)
+            audioSource.clip = sounds[i];
+            audioSource.Play();
+            if (i < sounds.Count)
             {
                 i++;
             }
@@ -21,8 +22,6 @@ public class MusicPlayer : MonoBehaviour
             {
                 i = 0;
             }
-            audioSource.clip = sounds[i];
-            audioSource.Play();
         }
     }
 

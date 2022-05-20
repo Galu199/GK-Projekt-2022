@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-enum objectId
+public enum objectId
 {
     Air,
+    ItemCoin,
     Wall,
     WallElevator,
-    WallPowerSwitch,
-    ItemCoin
+    WallPowerSwitch
 }
 
 public class LevelController : MonoBehaviour

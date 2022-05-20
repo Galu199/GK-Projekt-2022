@@ -19,13 +19,13 @@ public class MapTunnelingRoom
             map.Add(new List<int>());
             for (int x = 0; x < sizeX; x++)
             {
-                map[y].Add(1);
+                map[y].Add((int)objectId.Wall);
             }
         }
         //TUNNELING
         while (maxFreeSpace > 0)
         {
-            map[Y][X] = 0;
+            map[Y][X] = (int)objectId.Air;
             maxFreeSpace -= 1;
             var kierunek = Random.Range(1, 4 + 1);//range is max exlusive
             switch (kierunek)

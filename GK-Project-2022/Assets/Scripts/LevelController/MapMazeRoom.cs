@@ -32,7 +32,7 @@ public class MapMazeRoom
             map.Add(new List<int>());
             for (int x = 0; x < sizeX; x++)
             {
-                map[y].Add(1);
+                map[y].Add((int)objectId.Wall);
             }
         }
         //CHECK IF SIZE CORRECT AFTER INITIALIZE
@@ -113,23 +113,23 @@ public class MapMazeRoom
                 {
                     case 1:
                         here = new Tuple<int, int>(here.Item1, here.Item2 + 2);
-                        map[here.Item2][here.Item1] = 0;
-                        map[here.Item2-1][here.Item1] = 0;
+                        map[here.Item2][here.Item1] = (int)objectId.Air;
+                        map[here.Item2-1][here.Item1] = (int)objectId.Air;
                         break;
                     case 2:
                         here = new Tuple<int, int>(here.Item1, here.Item2 - 2);
-                        map[here.Item2][here.Item1] = 0;
-                        map[here.Item2+1][here.Item1] = 0;
+                        map[here.Item2][here.Item1] = (int)objectId.Air;
+                        map[here.Item2+1][here.Item1] = (int)objectId.Air;
                         break;
                     case 3:
                         here = new Tuple<int, int>(here.Item1 + 2, here.Item2);
-                        map[here.Item2][here.Item1] = 0;
-                        map[here.Item2][here.Item1-1] = 0;
+                        map[here.Item2][here.Item1] = (int)objectId.Air;
+                        map[here.Item2][here.Item1-1] = (int)objectId.Air;
                         break;
                     case 4:
                         here = new Tuple<int, int>(here.Item1 - 2, here.Item2);
-                        map[here.Item2][here.Item1] = 0;
-                        map[here.Item2][here.Item1+1] = 0;
+                        map[here.Item2][here.Item1] = (int)objectId.Air;
+                        map[here.Item2][here.Item1+1] = (int)objectId.Air;
                         break;
                 }
             }

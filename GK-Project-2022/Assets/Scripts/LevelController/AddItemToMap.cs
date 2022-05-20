@@ -32,9 +32,9 @@ public class AddItemToMap : MonoBehaviour
         //VARIABLE
         var freeSpace = new List<Tuple<int, int>>();
         //Finding free space for item to spawn
-        for (int y = 1; y < map.Count - 1; y++)
+        for (int y = 1; y < map.Count - 1 - 1; y++)
         {
-            for (int x = 1; x < map[y].Count - 1; x++)
+            for (int x = 1; x < map[y].Count - 1 - 1; x++)
             {
                 if (map[y][x] == 0)
                 {

@@ -17,9 +17,9 @@ public class MapRoom
             for (int x = 0; x < sizeX; x++)
             {
                 if (x == 0 || y == 0 || y == sizeY - 1 || x == sizeX - 1)
-                    map[y].Add(1);
+                    map[y].Add((int)objectId.Wall);
                 else
-                    map[y].Add(0);
+                    map[y].Add((int)objectId.Air);
             }
         }
         //RETURN
