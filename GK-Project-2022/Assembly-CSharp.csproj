@@ -96,6 +96,8 @@
     <Compile Include="Assets\Scripts\ObjectsScripts\ElevatorButton.cs" />
     <Compile Include="Assets\Scripts\ObjectsScripts\Item.cs" />
     <Compile Include="Assets\Objects\Mini First Person Controller\Scripts\Components\GroundCheck.cs" />
+    <Compile Include="Assets\Scripts\SceneLoader.cs" />
+    <Compile Include="Assets\Scripts\SettingsController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -9,9 +9,11 @@ public class MenuController : MonoBehaviour
 
     [SerializeField] Canvas mainMenuCanvas;
     [SerializeField] Canvas settingsCanvas;
+    SceneLoader sceneLoader;
 
     private void Awake()
     {
+        sceneLoader = new SceneLoader();
        settingsCanvas.enabled = false;
     }
 
@@ -22,8 +24,7 @@ public class MenuController : MonoBehaviour
     }
     public void OnStartButtonClick()
     {
-       
-
+        StartCoroutine(sceneLoader.LoadAsyncScene(1));
         
     }
 
