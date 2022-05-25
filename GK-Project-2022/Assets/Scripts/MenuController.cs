@@ -24,6 +24,7 @@ public class MenuController : MonoBehaviour
     }
     public void OnStartButtonClick()
     {
+        
         StartCoroutine(sceneLoader.LoadAsyncScene(1));
         
     }

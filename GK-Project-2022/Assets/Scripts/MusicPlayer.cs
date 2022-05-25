@@ -8,6 +8,11 @@ public class MusicPlayer : MonoBehaviour
     public AudioSource audioSource;
     int i = 0;
 
+    private void Awake()
+    {
+        audioSource.volume = (float) PlayerPrefs.GetFloat("volume");
+        
+    }
     void Update()
     {
         if (!audioSource.isPlaying && audioSource.isActiveAndEnabled)
