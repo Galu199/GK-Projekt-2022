@@ -35,8 +35,16 @@ public class PauseScreenControler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!pauseScreen.enabled)
+            {
                 pauseScreen.enabled = true;
-            else pauseScreen.enabled = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = true;
+               
+            }
+            else { pauseScreen.enabled = false;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = false;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Z)&&pauseScreen.enabled)
