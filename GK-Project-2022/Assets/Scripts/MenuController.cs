@@ -2,19 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour
 {
-
-
+    [SerializeField] GameObject eventSystem;
     [SerializeField] Canvas mainMenuCanvas;
     [SerializeField] Canvas settingsCanvas;
     SceneLoader sceneLoader;
 
     private void Awake()
     {
-        sceneLoader = new SceneLoader();
+        
+       sceneLoader = new SceneLoader();
        settingsCanvas.enabled = false;
+        
+        
     }
 
     public void OnSettingsButtonClick()
@@ -24,16 +27,18 @@ public class MenuController : MonoBehaviour
     }
     public void OnStartButtonClick()
     {
-        
-        StartCoroutine(sceneLoader.LoadAsyncScene(1));
+       
+        SceneManager.LoadScene(1);
         
     }
-
+    
     public void OnExitButtonClick()
     {
-        
+       
         Application.Quit();
     }
+
+   
 
     public void OnBackToMenuButtonClick()
     {

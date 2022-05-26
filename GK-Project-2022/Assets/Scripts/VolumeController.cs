@@ -9,17 +9,15 @@ public class VolumeController : MonoBehaviour
     Scrollbar scrollbar;
     [SerializeField]
     AudioSource audioSource;
-    
+
     private void Awake()
     {
-        
-      
+        ChangeVolume();
     }
     public void ChangeVolume()
     {
         audioSource.volume = scrollbar.value;
         PlayerPrefs.SetFloat("volume", audioSource.volume);
-        Debug.Log(PlayerPrefs.GetFloat("volume"));
     }
     
 }
