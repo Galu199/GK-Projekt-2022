@@ -32,7 +32,7 @@ public class AddObjWallToMap
         return map;
     }
 
-    public static void Generate2(ref List<List<int>> map, int objectId)
+    public static void Generate2(ref List<List<int>> map, int _objectId)
     {
         //VARIABLE
         var avilible = new List<Tuple<int, int>>();
@@ -47,13 +47,13 @@ public class AddObjWallToMap
         {
             for (int x = 1; x < map[y].Count - 1 - 1; x++)
             {
-                if (map[y][x] == 0) continue;
+                if (map[y][x] != (int)objectId.Wall) continue;
                 if (map[y][x + 1] == 0 || map[y][x - 1] == 0 || map[y + 1][x] == 0 || map[y - 1][x] == 0)
                     avilible.Add(new Tuple<int, int>(x, y));
             }
         }
         //Choose random avilible cord
         var choosen = avilible[UnityEngine.Random.Range(0, avilible.Count)];
-        map[choosen.Item2][choosen.Item1] = objectId;
+        map[choosen.Item2][choosen.Item1] = _objectId;
     }
 }
