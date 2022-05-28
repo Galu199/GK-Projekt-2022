@@ -18,7 +18,28 @@ public class GameController : MonoBehaviour
         GenerateLevel(level++);
     }
 
+    private void OnEnable()
+    {
+        Health.Death += IfPalyerisDead;
+        SelectionManager.OnElevatorClick += IfElevatorButtonIsPressed;
+        SelectionManager.OnPowerClick += IfElevatorPowerSwitchIsPressed;
+        SelectionManager.OnItemClick += IfItemIsClickedPutItInInventory;
+    }
+
+    private void OnDisable()
+    {
+        Health.Death -= IfPalyerisDead;
+        SelectionManager.OnElevatorClick -= IfElevatorButtonIsPressed;
+        SelectionManager.OnPowerClick -= IfElevatorPowerSwitchIsPressed;
+        SelectionManager.OnItemClick -= IfItemIsClickedPutItInInventory;
+    }
+
     private void Update()
+    {
+
+    }
+
+    private void IfPalyerisDead()
     {
         if (levelController.player.GetComponent<Health>().CurrentHealth <= 0)
         {
@@ -26,7 +47,10 @@ public class GameController : MonoBehaviour
             levelController.MoveEnemyToRandomSpawn();
             levelController.player.GetComponent<Health>().Reset();
         }
+    }
 
+    private void IfElevatorButtonIsPressed()
+    {
         if (selectionManager.elevatorButtonPressed)
         {
             selectionManager.elevatorButtonPressed = false;
@@ -37,14 +61,20 @@ public class GameController : MonoBehaviour
                 GenerateLevel(level++);
             }
         }
+    }
 
+    private void IfElevatorPowerSwitchIsPressed()
+    {
         if (selectionManager.elevatorPowerPressed)
         {
             selectionManager.elevatorPowerPressed = false;
             PowerOn = true;
             foreach (var item in FindObjectsOfType<ElevatorButton>()) item.TogglePower(PowerOn);
         }
+    }
 
+    private void IfItemIsClickedPutItInInventory()
+    {
         if (selectionManager.clickedItem != null)
         {
             player.GetComponent<Equipment>().listOfItems.Add(selectionManager.clickedItem);

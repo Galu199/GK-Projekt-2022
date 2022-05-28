@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
+    public delegate void NoHealthPoints();
+    public static event NoHealthPoints Death;
+
     public Image healthbar;
 
     public int MaxHealth = 100;
@@ -14,6 +17,11 @@ public class Health : MonoBehaviour
     {
         CurrentHealth -= damage;
         healthbar.fillAmount = (float)CurrentHealth / MaxHealth;
+        if (CurrentHealth <= 0)
+        {
+            if (Death != null)
+                Death();
+        }
     }
 
     public void Reset()

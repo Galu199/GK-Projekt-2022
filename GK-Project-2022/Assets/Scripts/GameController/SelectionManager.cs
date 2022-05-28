@@ -10,6 +10,10 @@ public class SelectionManager : MonoBehaviour
     public bool elevatorButtonPressed = false;
     public bool elevatorPowerPressed = false;
     public Item clickedItem = null;
+    public delegate void ClickAction();
+    public static event ClickAction OnElevatorClick;
+    public static event ClickAction OnPowerClick;
+    public static event ClickAction OnItemClick;
 
     private void Update()
     {
@@ -23,17 +27,20 @@ public class SelectionManager : MonoBehaviour
                 if (selection.GetComponent<ElevatorButton>() != null)
                 {
                     elevatorButtonPressed = true;
+                    if (OnElevatorClick != null) OnElevatorClick();
                 }
                 else
                 if (selection.GetComponent<ElevatorPower>() != null)
                 {
                     selection.GetComponent<Animator>().SetBool("TurnOn", true);
                     elevatorPowerPressed = true;
+                    if (OnPowerClick != null) OnPowerClick();
                 }
                 else
                 if (selection.GetComponent<Item>() != null)
                 {
                     clickedItem = selection.GetComponent<Item>();
+                    if (OnItemClick != null) OnItemClick();
                 }
                 else
                 if (false)
