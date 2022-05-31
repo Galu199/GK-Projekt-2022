@@ -1,34 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MusicPlayer : MonoBehaviour
 {
     public List<AudioClip> sounds;
     public AudioSource audioSource;
-    int i = 0;
+    public Scrollbar VolumeBar;
 
-    private void Awake()
+    int i = 0;
+    float volume;
+
+    private void Start()
     {
-        audioSource.volume = (float) PlayerPrefs.GetFloat("volume");
-        
+        if(VolumeBar)
+            VolumeBar.value = PlayerPrefs.GetFloat("MusicVolume");
+        else
+            audioSource.volume = PlayerPrefs.GetFloat("MusicVolume");
+        volume = PlayerPrefs.GetFloat("MusicVolume");
     }
-    void Update()
+
+    private void Update()
     {
+        if (VolumeBar)
+        {
+            volume = audioSource.volume = VolumeBar.value;
+        }
         if (!audioSource.isPlaying && audioSource.isActiveAndEnabled)
         {
-            audioSource.clip = sounds[i];
-            audioSource.Play();
-            if (i < sounds.Count)
-            {
-                i++;
-            }
-            else
+            if (i >= sounds.Count)
             {
                 i = 0;
             }
+            audioSource.clip = sounds[i];
+            audioSource.Play();
+            i++;
         }
     }
 
+    private void OnDestroy()
+    {
+        VolumePrefs();
+    }
+
+    public void VolumePrefs()
+    {
+        PlayerPrefs.SetFloat("MusicVolume", volume);
+    }
 
 }

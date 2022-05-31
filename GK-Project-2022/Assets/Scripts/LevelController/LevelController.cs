@@ -131,22 +131,22 @@ public class LevelController : MonoBehaviour
 
     private void RotateObject(Wall obj, int x, int y)
     {
-        if (y < mapY - 1 && map[y + 1][x] == 0)
+        if (y < mapY - 1 && map[y + 1][x] < (int)objectId.Wall)
         {
             //do nothing
         }
         else
-        if (x < mapX - 1 && map[y][x + 1] == 0)
+        if (x < mapX - 1 && map[y][x + 1] < (int)objectId.Wall)
         {
             obj.Rotate(new Vector3(0, 90.0f, 0));
         }
         else
-        if (y > 0 && map[y - 1][x] == 0)
+        if (y > 0 && map[y - 1][x] < (int)objectId.Wall)
         {
             obj.Rotate(new Vector3(0, 180.0f, 0));
         }
         else
-        if (x > 0 && map[y][x - 1] == 0)
+        if (x > 0 && map[y][x - 1] < (int)objectId.Wall)
         {
             obj.Rotate(new Vector3(0, -90.0f, 0));
         }

@@ -57,7 +57,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\DontDestroy.cs" />
-    <Compile Include="Assets\Scripts\VolumeController.cs" />
     <Compile Include="Assets\Scripts\LevelController\AddItemToMap.cs" />
     <Compile Include="Assets\Objects\Mini First Person Controller\Scripts\FirstPersonMovement.cs" />
     <Compile Include="Assets\Scripts\LevelController\MapRoom.cs" />

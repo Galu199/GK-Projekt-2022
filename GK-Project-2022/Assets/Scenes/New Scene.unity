@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -389,11 +389,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 186656206}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4475b49ca763af24684327cd3d42db09, type: 3}
+  m_Script: {fileID: 11500000, guid: 91760df519a848f4495ef059489f9514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollbar: {fileID: 1921993848}
+  sounds:
+  - {fileID: 8300000, guid: 47dc99343dab1b44a94a5349b9511c2e, type: 3}
   audioSource: {fileID: 1045723105}
+  volume: {fileID: 1921993848}
 --- !u!1 &561291166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,7 +1009,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 47dc99343dab1b44a94a5349b9511c2e, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1241,7 +1243,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1526145440
 Light:
   m_ObjectHideFlags: 0
@@ -1691,8 +1693,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 186656209}
-        m_TargetAssemblyTypeName: VolumeController, Assembly-CSharp
-        m_MethodName: ChangeVolume
+        m_TargetAssemblyTypeName: MusicPlayer, Assembly-CSharp
+        m_MethodName: VolumePrefs
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

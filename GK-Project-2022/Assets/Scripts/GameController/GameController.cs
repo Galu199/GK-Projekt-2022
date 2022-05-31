@@ -77,8 +77,10 @@ public class GameController : MonoBehaviour
     {
         if (selectionManager.clickedItem != null)
         {
-            player.GetComponent<Equipment>().listOfItems.Add(selectionManager.clickedItem);
-            selectionManager.clickedItem.SetActivity(false);
+            player.GetComponent<Equipment>().AddToEq(selectionManager.clickedItem.Clone());
+            player.GetComponent<Equipment>().DrawInventory();
+            //selectionManager.clickedItem.SetActivity(false);
+            selectionManager.clickedItem.Delete();
             selectionManager.clickedItem = null;
         }
     }
