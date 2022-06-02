@@ -395,7 +395,7 @@ MonoBehaviour:
   sounds:
   - {fileID: 8300000, guid: 47dc99343dab1b44a94a5349b9511c2e, type: 3}
   audioSource: {fileID: 1045723105}
-  volume: {fileID: 1921993848}
+  VolumeBar: {fileID: 1921993848}
 --- !u!1 &561291166
 GameObject:
   m_ObjectHideFlags: 0

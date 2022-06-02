@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour
         SelectionManager.OnElevatorClick += IfElevatorButtonIsPressed;
         SelectionManager.OnPowerClick += IfElevatorPowerSwitchIsPressed;
         SelectionManager.OnItemClick += IfItemIsClickedPutItInInventory;
+        player.GetComponent<Equipment>().ItemUsed += Inventory_ItemUsed;
     }
 
     private void OnDisable()
@@ -32,6 +33,7 @@ public class GameController : MonoBehaviour
         SelectionManager.OnElevatorClick -= IfElevatorButtonIsPressed;
         SelectionManager.OnPowerClick -= IfElevatorPowerSwitchIsPressed;
         SelectionManager.OnItemClick -= IfItemIsClickedPutItInInventory;
+        player.GetComponent<Equipment>().ItemUsed -= Inventory_ItemUsed;
     }
 
     private void Update()
@@ -77,7 +79,7 @@ public class GameController : MonoBehaviour
     {
         if (selectionManager.clickedItem != null)
         {
-            player.GetComponent<Equipment>().AddToEq(selectionManager.clickedItem.Clone());
+            player.GetComponent<Equipment>().AddItem(selectionManager.clickedItem);
             player.GetComponent<Equipment>().DrawInventory();
             //selectionManager.clickedItem.SetActivity(false);
             selectionManager.clickedItem.Delete();
@@ -93,4 +95,20 @@ public class GameController : MonoBehaviour
         levelController.GenerateMap();
     }
 
+    private void Inventory_ItemUsed(object sender, EquipmentEventArgs e)
+    {
+        var item = e.item;
+        if (item.GetType() == typeof(Coin))
+        {
+            Debug.Log("Coin used");
+        }
+        else
+        if (item.GetType() == typeof(Piwo))
+        {
+            Debug.Log("Beer used");
+            player.GetComponent<Equipment>().RemoveItem(item);
+            player.GetComponent<Equipment>().DrawInventory();
+            player.GetComponent<Health>().Reset();
+        }
+    }
 }

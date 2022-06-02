@@ -1,11 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Item : MonoBehaviour
+public class Item : MonoBehaviour
 {
-    public int Stack = 0;
+    public int Stack;
     public Sprite image;
+
+    private void Start()
+    {
+        Stack = 1;
+    }
 
     public void Teleport(Vector3 position)
     {
@@ -26,7 +32,4 @@ public abstract class Item : MonoBehaviour
     {
         gameObject.SetActive(active);
     }
-
-    public abstract Item Clone();
-    public abstract void Use();
 }

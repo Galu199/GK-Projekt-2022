@@ -7,6 +7,7 @@ public enum objectId
 {
     Air,
     ItemCoin,
+    ItemBeer,
     Wall,
     WallElevator,
     WallPowerSwitch
@@ -22,6 +23,7 @@ public class LevelController : MonoBehaviour
     public GameObject prefabWallElevator;
     public GameObject prefabWallPowerSwitch;
     public GameObject prefabCoin;
+    public GameObject prefabBeer;
 
     public GameObject WallsContainer;
     public GameObject ItemContainer;
@@ -59,6 +61,7 @@ public class LevelController : MonoBehaviour
         AddObjWallToMap.Generate2(ref map, (int)objectId.WallElevator);
         AddObjWallToMap.Generate2(ref map, (int)objectId.WallPowerSwitch);
         if (Random.Range(0, 2) % 2 == 0) AddItemToMap.Generate2(ref map, (int)objectId.ItemCoin);
+        if (Random.Range(0, 2) % 2 == 0) AddItemToMap.Generate2(ref map, (int)objectId.ItemBeer);
         mapOptimized = optimizeMapWalls.Generate3(map);
         SpawnMap(mapOptimized);
         //navMeshSurface.BuildNavMesh();
@@ -107,6 +110,9 @@ public class LevelController : MonoBehaviour
                         break;
                     case (int)objectId.ItemCoin:
                         GenerateItem(prefabCoin, x, y);
+                        break;
+                    case (int)objectId.ItemBeer:
+                        GenerateItem(prefabBeer, x, y);
                         break;
                 }
             }

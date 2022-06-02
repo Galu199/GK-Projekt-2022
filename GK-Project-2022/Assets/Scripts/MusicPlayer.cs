@@ -25,8 +25,10 @@ public class MusicPlayer : MonoBehaviour
     {
         if (VolumeBar)
         {
-            volume = audioSource.volume = VolumeBar.value;
+            audioSource.volume = VolumeBar.value;
         }
+        volume = audioSource.volume;
+
         if (!audioSource.isPlaying && audioSource.isActiveAndEnabled)
         {
             if (i >= sounds.Count)
