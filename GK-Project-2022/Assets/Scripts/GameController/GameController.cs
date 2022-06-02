@@ -33,7 +33,7 @@ public class GameController : MonoBehaviour
         SelectionManager.OnElevatorClick -= IfElevatorButtonIsPressed;
         SelectionManager.OnPowerClick -= IfElevatorPowerSwitchIsPressed;
         SelectionManager.OnItemClick -= IfItemIsClickedPutItInInventory;
-        player.GetComponent<Equipment>().ItemUsed -= Inventory_ItemUsed;
+        if(player!=null) player.GetComponent<Equipment>().ItemUsed -= Inventory_ItemUsed;
     }
 
     private void Update()
