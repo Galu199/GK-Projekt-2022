@@ -41,6 +41,27 @@ public class GameController : MonoBehaviour
 
     }
 
+    private void GenerateLevel(int level)
+    {
+        aiController.numberOfenemies = 1;
+        aiController.SpawnEnemies();
+        levelController.seed = (int)(level*Time.deltaTime*Random.Range(10000,90000));
+        levelController.mapX = Random.Range(10, 21);
+        levelController.mapY = Random.Range(10, 21);
+        switch (level % 5)
+        {
+            case 0:
+                levelController.MapGenNumber = 2;
+                levelController.mapX = Random.Range(7, 15);
+                levelController.mapY = Random.Range(7, 15);
+                break;
+            default:
+                levelController.MapGenNumber = 1;
+                break;
+        }
+        levelController.GenerateMap();
+    }
+    
     private void IfPalyerisDead()
     {
         if (levelController.player.GetComponent<Health>().CurrentHealth <= 0)
@@ -85,14 +106,6 @@ public class GameController : MonoBehaviour
             selectionManager.clickedItem.Delete();
             selectionManager.clickedItem = null;
         }
-    }
-
-    private void GenerateLevel(int level)
-    {
-        aiController.numberOfenemies = 1;
-        aiController.SpawnEnemies();
-        levelController.seed = level;
-        levelController.GenerateMap();
     }
 
     private void Inventory_ItemUsed(object sender, EquipmentEventArgs e)

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9059988146320337793}
   - component: {fileID: 9059988146320337792}
   m_Layer: 0
-  m_Name: Fog
+  m_Name: FogPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,7 +115,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 60
+      scalar: 100
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -989,6 +989,15 @@ ParticleSystem:
           weightedMode: 0
           inWeight: 0
           outWeight: 0
+        - serializedVersion: 3
+          time: 0.989882
+          value: 1
+          inSlope: 0.09838647
+          outSlope: 0.09838647
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.13199052
+          outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
           value: 0

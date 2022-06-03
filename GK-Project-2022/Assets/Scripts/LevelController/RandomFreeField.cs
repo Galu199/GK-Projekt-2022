@@ -15,12 +15,13 @@ public class RandomFreeField
         {
             for (int x = 0; x < map[y].Count; x++)
             {
-                if (map[y][x] == 0)
+                if (map[y][x] == (int)objectId.Air)
                     freeFields.Add(new Tuple<int, int>(x, y));
             }
         }
         //CHOOSE RANDOM ONE
-        result = freeFields[UnityEngine.Random.Range(0, freeFields.Count)];
+        if (freeFields.Count > 0)
+            result = freeFields[UnityEngine.Random.Range(0, freeFields.Count)];
         //RETURN
         return result;
     }
