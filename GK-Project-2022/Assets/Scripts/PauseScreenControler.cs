@@ -4,12 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
+
 public class PauseScreenControler : MonoBehaviour
 {
     
   
     [SerializeField] Canvas pauseScreen;
     SceneLoader sceneLoader;
+
+    
+
     private void Awake()
     {
        
@@ -29,7 +34,7 @@ public class PauseScreenControler : MonoBehaviour
         pauseScreen.enabled = false;
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -39,11 +44,14 @@ public class PauseScreenControler : MonoBehaviour
                 pauseScreen.enabled = true;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = true;
+                Time.timeScale = 0;
                
             }
             else { pauseScreen.enabled = false;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = false;
+                Time.timeScale = 1;
+                
             }
         }
 
