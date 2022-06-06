@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerStay(Collider collider)
     {
+        if (collider == null) return;
         if (!readyToAtack) return;
         collider.GetComponent<Health>().UpdateHealthBar(DMG);
         readyToAtack = false;
