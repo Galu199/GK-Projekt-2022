@@ -56,15 +56,15 @@ public class LevelController : MonoBehaviour
                     map = MapTunnelingRoom.Generate(mapX, mapY, spawnX, spawnY, seed);
                 break;
         }
-        MovePlayerToSpawn();
-        MoveEnemyToRandomSpawn();
         AddObjWallToMap.Generate2(ref map, (int)objectId.WallElevator);
         AddObjWallToMap.Generate2(ref map, (int)objectId.WallPowerSwitch);
         for (int i = 0; i < 5; i++) AddItemToMap.Generate2(ref map, (int)objectId.ItemCoin);
         if (Random.Range(0, 2) % 2 == 0) AddItemToMap.Generate2(ref map, (int)objectId.ItemBeer);
         mapOptimized = optimizeMapWalls.Generate3(map);
         SpawnMap(mapOptimized);
-        //navMeshSurface.BuildNavMesh();
+        aiController.SpawnEnemies();
+        MovePlayerToSpawn();
+        MoveEnemyToRandomSpawn();
     }
 
     public void MovePlayerToSpawn()
@@ -80,7 +80,7 @@ public class LevelController : MonoBehaviour
         foreach (var enemy in aiController.enemies)
         {
             var freefield = RandomFreeField.Generate(map);
-            enemy.transform.position = (new Vector3(freefield.Item1 * prefabWall.transform.localScale.x, 1.5f, freefield.Item2 * prefabWall.transform.localScale.z));
+            enemy.Teleport(new Vector3(freefield.Item1 * prefabWall.transform.localScale.x, 1.5f, freefield.Item2 * prefabWall.transform.localScale.z));
         }
     }
 

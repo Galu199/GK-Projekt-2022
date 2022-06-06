@@ -44,7 +44,6 @@ public class GameController : MonoBehaviour
     private void GenerateLevel(int level)
     {
         aiController.numberOfenemies = 1;
-        aiController.SpawnEnemies();
         levelController.seed = (int)(level*Time.deltaTime*Random.Range(10000000,90000000));
         switch (level % 5)
         {

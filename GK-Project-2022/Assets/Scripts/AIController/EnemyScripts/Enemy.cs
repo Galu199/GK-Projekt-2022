@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,7 +29,9 @@ public class Enemy : MonoBehaviour
 
     public void Teleport(Vector3 position)
     {
-        GetComponent<Transform>().position = position;
+        gameObject.SetActive(false);
+        transform.position = position;
+        gameObject.SetActive(true);
     }
 
     public void Delete()

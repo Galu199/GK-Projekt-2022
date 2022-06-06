@@ -8,7 +8,7 @@ public class RandomFreeField
         //IMPORTANT RULES
         if (map == null) return null;
         //VARIABLES
-        var result = new Tuple<int, int>(0, 0);
+        var result = new Tuple<int, int>(1, 1);
         var freeFields = new List<Tuple<int, int>>();
         //CHECK FREE FIELDS
         for (int y = 0; y < map.Count; y++)
