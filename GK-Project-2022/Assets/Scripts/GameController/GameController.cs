@@ -45,9 +45,7 @@ public class GameController : MonoBehaviour
     {
         aiController.numberOfenemies = 1;
         aiController.SpawnEnemies();
-        levelController.seed = (int)(level*Time.deltaTime*Random.Range(10000,90000));
-        levelController.mapX = Random.Range(10, 21);
-        levelController.mapY = Random.Range(10, 21);
+        levelController.seed = (int)(level*Time.deltaTime*Random.Range(10000000,90000000));
         switch (level % 5)
         {
             case 0:
@@ -57,6 +55,8 @@ public class GameController : MonoBehaviour
                 break;
             default:
                 levelController.MapGenNumber = 1;
+                levelController.mapX = Random.Range(10, 21);
+                levelController.mapY = Random.Range(10, 21);
                 break;
         }
         levelController.GenerateMap();

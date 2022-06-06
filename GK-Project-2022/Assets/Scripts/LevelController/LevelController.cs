@@ -60,7 +60,7 @@ public class LevelController : MonoBehaviour
         MoveEnemyToRandomSpawn();
         AddObjWallToMap.Generate2(ref map, (int)objectId.WallElevator);
         AddObjWallToMap.Generate2(ref map, (int)objectId.WallPowerSwitch);
-        if (Random.Range(0, 2) % 2 == 0) AddItemToMap.Generate2(ref map, (int)objectId.ItemCoin);
+        for (int i = 0; i < 5; i++) AddItemToMap.Generate2(ref map, (int)objectId.ItemCoin);
         if (Random.Range(0, 2) % 2 == 0) AddItemToMap.Generate2(ref map, (int)objectId.ItemBeer);
         mapOptimized = optimizeMapWalls.Generate3(map);
         SpawnMap(mapOptimized);
@@ -88,6 +88,12 @@ public class LevelController : MonoBehaviour
     {
         foreach (var wall in walls) wall.Delete();
         walls.Clear();
+        foreach (var item in items)
+        {
+            if (item != null)
+                item.Delete();
+        }
+        items.Clear();
         for (int y = 0; y < _map.Count; y++)
         {
             for (int x = 0; x < _map[y].Count; x++)
@@ -126,7 +132,7 @@ public class LevelController : MonoBehaviour
         walls.Add(item);
         item.Teleport(new Vector3(x * prefabWall.transform.localScale.x, prefabWall.transform.position.y, z * prefabWall.transform.localScale.z));
     }
-    
+
     private void GenerateItem(GameObject prefab, int x, int z)
     {
         GameObject Obj = Instantiate(prefab, ItemContainer.transform);
