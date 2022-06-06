@@ -26,7 +26,6 @@ public class PauseScreenControler : MonoBehaviour
     {
 
         SceneManager.LoadScene(0);
-       // StartCoroutine(sceneLoader.LoadAsyncScene(0));
     }
 
     public void OnBackToGameButtonClick()
