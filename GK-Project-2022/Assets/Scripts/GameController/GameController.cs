@@ -122,5 +122,12 @@ public class GameController : MonoBehaviour
             player.GetComponent<Equipment>().DrawInventory();
             player.GetComponent<Health>().Reset();
         }
+        else
+        if (item.GetType() == typeof(Solder))
+        {
+            Debug.Log("Solder used");
+            //TO DO
+            // if 75z³ koniec gry win else dialog nie masz hasju na ects-a
+        }
     }
 }

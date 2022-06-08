@@ -42,11 +42,11 @@ public class SelectionManager : MonoBehaviour
                     clickedItem = selection.GetComponent<Item>();
                     if (OnItemClick != null) OnItemClick();
                 }
-                else
-                if (false)
-                {
+                //else
+                //if (false)
+                //{
 
-                }
+                //}
             }
         }
         Debug.DrawRay(ray.origin, ray.direction * maxReachLength, Color.yellow);

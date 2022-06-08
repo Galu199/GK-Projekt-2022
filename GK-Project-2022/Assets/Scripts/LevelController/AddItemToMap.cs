@@ -14,7 +14,7 @@ public class AddItemToMap : MonoBehaviour
         {
             for (int x = 1; x < map[y].Count - 1; x++)
             {
-                if (map[y][x]==0)
+                if (map[y][x] == 0)
                 {
                     freeSpace.Add(new Tuple<int, int>(x, y));
                 }
@@ -27,7 +27,7 @@ public class AddItemToMap : MonoBehaviour
         return map;
     }
 
-    public static void Generate2(ref List<List<int>> map, int objectId)
+    public static void Generate2(ref List<List<int>> map, int _objectId)
     {
         //VARIABLE
         var freeSpace = new List<Tuple<int, int>>();
@@ -36,7 +36,7 @@ public class AddItemToMap : MonoBehaviour
         {
             for (int x = 1; x < map[y].Count - 1 - 1; x++)
             {
-                if (map[y][x] == 0)
+                if (map[y][x] == (int)objectId.Air)
                 {
                     freeSpace.Add(new Tuple<int, int>(x, y));
                 }
@@ -44,6 +44,7 @@ public class AddItemToMap : MonoBehaviour
         }
         //Adding One item
         var choosen = freeSpace[UnityEngine.Random.Range(0, freeSpace.Count)];
-        map[choosen.Item2][choosen.Item1] = objectId;
+        if (choosen != null)
+            map[choosen.Item2][choosen.Item1] = _objectId;
     }
 }
