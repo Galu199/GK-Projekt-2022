@@ -1,3 +1,4 @@
+using Main.Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class GameController : MonoBehaviour
     public AIController aiController;
     public SelectionManager selectionManager;
     public GameObject player;
+    public GameObject UI;
     public int level = 0;
     public bool GenerateEnemies = true;
     public bool GenerateMap = true;
@@ -128,6 +130,19 @@ public class GameController : MonoBehaviour
             Debug.Log("Solder used");
             //TO DO
             // if 75z³ koniec gry win else dialog nie masz hasju na ects-a
+            foreach(var it in player.GetComponent<Equipment>().ListOfItems)
+            {
+                if (it.GetType() != typeof(Coin)) continue;
+                if (it.Stack < 75) continue;
+                // TO DO zmieñ scene na win screen
+                var messageBox1 = Helpers.BringMessageBox(UI);
+                messageBox1.SetMessage("Wygra³eœ");
+                messageBox1.Dissapear();
+                return;
+            }
+            var messageBox2 = Helpers.BringMessageBox(UI);
+            messageBox2.SetMessage("Potrzebujesz 75z³ na ECTS-a!");
+            messageBox2.Dissapear();
         }
     }
 }
