@@ -15,7 +15,7 @@ public class WinScreenControler : MonoBehaviour
     private void Update()
     {
         time = time + Time.deltaTime;
-        Debug.Log(time);
+     
         if (time > 8.0f)
         {
             time = 0f;
