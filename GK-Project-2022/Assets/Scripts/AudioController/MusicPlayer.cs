@@ -7,15 +7,15 @@ public class MusicPlayer : MonoBehaviour
 {
     public List<AudioClip> sounds;
     public AudioSource audioSource;
-    public Scrollbar VolumeBar;
+    public Slider VolumeSlider;
 
     int i = 0;
     float volume;
 
     private void Start()
     {
-        if(VolumeBar)
-            VolumeBar.value = PlayerPrefs.GetFloat("MusicVolume");
+        if(VolumeSlider)
+            VolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
         else
             audioSource.volume = PlayerPrefs.GetFloat("MusicVolume");
         volume = PlayerPrefs.GetFloat("MusicVolume");
@@ -23,9 +23,9 @@ public class MusicPlayer : MonoBehaviour
 
     private void Update()
     {
-        if (VolumeBar)
+        if (VolumeSlider)
         {
-            audioSource.volume = VolumeBar.value;
+            audioSource.volume = VolumeSlider.value;
         }
         volume = audioSource.volume;
 

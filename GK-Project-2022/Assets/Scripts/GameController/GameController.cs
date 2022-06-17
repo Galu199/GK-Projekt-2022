@@ -2,6 +2,7 @@ using Main.Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -38,10 +39,6 @@ public class GameController : MonoBehaviour
         if(player!=null) player.GetComponent<Equipment>().ItemUsed -= Inventory_ItemUsed;
     }
 
-    private void Update()
-    {
-
-    }
 
     private void GenerateLevel(int level)
     {
@@ -134,10 +131,10 @@ public class GameController : MonoBehaviour
             {
                 if (it.GetType() != typeof(Coin)) continue;
                 if (it.Stack < 75) continue;
-                // TO DO zmieñ scene na win screen
-                var messageBox1 = Helpers.BringMessageBox(UI);
-                messageBox1.SetMessage("Wygra³eœ");
-                messageBox1.Dissapear();
+                
+                    SceneManager.UnloadSceneAsync(1);
+                    SceneManager.LoadSceneAsync(2);
+
                 return;
             }
             var messageBox2 = Helpers.BringMessageBox(UI);
