@@ -24,12 +24,14 @@ public class PauseScreenControler : MonoBehaviour
 
     public void OnBackToMenuButtonClick()
     {
-
-        SceneManager.LoadScene(0);
+        Time.timeScale = 1;
+        SceneManager.UnloadSceneAsync(1);
+        SceneManager.LoadSceneAsync(0);
     }
 
     public void OnBackToGameButtonClick()
     {
+       
         pauseScreen.enabled = false;
     }
 
@@ -41,14 +43,10 @@ public class PauseScreenControler : MonoBehaviour
             if (!pauseScreen.enabled)
             {
                 pauseScreen.enabled = true;
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = true;
                 Time.timeScale = 0;
                
             }
             else { pauseScreen.enabled = false;
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = false;
                 Time.timeScale = 1;
                 
             }
@@ -56,6 +54,8 @@ public class PauseScreenControler : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z)&&pauseScreen.enabled)
         {
+            Time.timeScale = 1;
+            SceneManager.UnloadSceneAsync(1);
             StartCoroutine(sceneLoader.LoadAsyncScene(0));
         }
        

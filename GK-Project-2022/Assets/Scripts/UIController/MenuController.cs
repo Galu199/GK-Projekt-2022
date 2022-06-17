@@ -31,6 +31,7 @@ public class MenuController : MonoBehaviour
        
         SceneManager.LoadScene(1);
         
+        
     }
     
     public void OnExitButtonClick()
