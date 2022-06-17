@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\LevelController\LevelController.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Utility\SmoothFollow.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Cameras\Scripts\FreeLookCam.cs" />
+    <Compile Include="Assets\Scripts\UIController\WinScreenControler.cs" />
     <Compile Include="Assets\dontKnow\Mini First Person Controller\Scripts\Components\FirstPersonAudio.cs" />
     <Compile Include="Assets\Scripts\LevelController\MapTunnelingRoom.cs" />
     <Compile Include="Assets\Resources\Standard Assets\ParticleSystems\Scripts\AfterburnerPhysicsForce.cs" />
@@ -123,7 +124,6 @@
     <Compile Include="Assets\Scripts\GameController\GameController.cs" />
     <Compile Include="Assets\Scripts\AIController\NavMeshComponents\NavMeshModifier.cs" />
     <Compile Include="Assets\Scripts\AIController\EnemyScripts\StandardEnemyBehaviour.cs" />
-    <Compile Include="Assets\Scripts\UIController\SettingsController.cs" />
     <Compile Include="Assets\Resources\Pixelation\Scripts\Chunky.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Utility\ForcedReset.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Utility\ParticleSystemDestroyer.cs" />
@@ -162,11 +162,11 @@
     <Compile Include="Assets\Resources\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
     <Compile Include="Assets\Resources\Pixelation\Scripts\Pixelation.cs" />
     <Compile Include="Assets\Resources\Standard Assets\ParticleSystems\Scripts\Hose.cs" />
+    <Compile Include="Assets\Scripts\AIController\EnemyScripts\EnemyGhoulAnimation.cs" />
     <Compile Include="Assets\Resources\Pixelation\Example\Scripts\PointLight.cs" />
     <Compile Include="Assets\dontKnow\Mini First Person Controller\Scripts\Components\GroundCheck.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Utility\FPSCounter.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Utility\SimpleActivatorMenu.cs" />
-    <Compile Include="Assets\Scripts\AIController\EnemyScripts\EnemyGhoulAnimation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\TextMesh Pro\Shaders\TMPro.cginc" />

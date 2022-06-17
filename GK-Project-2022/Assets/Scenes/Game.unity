@@ -1053,8 +1053,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3
-  m_Range: 5
+  m_Intensity: 2
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -3480,7 +3480,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: dc1d6b96e081b4befbd033dee4730596, type: 3}
   - {fileID: 8300000, guid: e228c43a63d2649ceb7e385c3d3864e2, type: 3}
   audioSource: {fileID: 207856558}
-  VolumeBar: {fileID: 0}
+  VolumeSlider: {fileID: 0}
 --- !u!1 &1780172705
 GameObject:
   m_ObjectHideFlags: 0
