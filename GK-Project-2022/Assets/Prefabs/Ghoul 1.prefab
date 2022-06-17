@@ -1180,6 +1180,7 @@ GameObject:
   - component: {fileID: 3610164500584065660}
   - component: {fileID: -5317328852389471316}
   - component: {fileID: 2441811987655249068}
+  - component: {fileID: 6873115608385471360}
   m_Layer: 0
   m_Name: Ghoul 1
   m_TagString: Untagged
@@ -1215,7 +1216,7 @@ Animation:
   m_GameObject: {fileID: 1309486516299566}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400004, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
+  m_Animation: {fileID: 7400012, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
   m_Animations:
   - {fileID: 7400000, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
   - {fileID: 7400002, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
@@ -1225,9 +1226,9 @@ Animation:
   - {fileID: 7400010, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
   - {fileID: 7400012, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 1
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 1
+  m_CullingType: 0
 --- !u!54 &7472420297759794434
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1271,8 +1272,8 @@ NavMeshAgent:
   m_Speed: 1.5
   m_Acceleration: 6
   avoidancePriority: 50
-  m_AngularSpeed: 180
-  m_StoppingDistance: 1.1
+  m_AngularSpeed: 360
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1298,10 +1299,18 @@ MonoBehaviour:
   isGround:
     serializedVersion: 2
     m_Bits: 8
+  hasGoal: 0
   goal: {x: 0, y: 0, z: 0}
-  sightRange: 50
-  stoppingRange: 1
-  attackRange: 1.5
+  sightRange: 10
+  stoppingRange: 2
+  attackRange: 2.5
+  wander: 0
+  follow: 0
+  attack: 0
+  speed: 1.5
+  cooldown: 1
+  time: 0
+  velocity: 0
 --- !u!114 &2441811987655249068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1317,6 +1326,20 @@ MonoBehaviour:
   dmgPerSecond: 2
   HP: 10
   DMG: 10
+--- !u!114 &6873115608385471360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309486516299566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f80adf77ddc906f429dd5c5d9dcb05ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 3610164500584065660}
+  anim: {fileID: 111670102475343736}
 --- !u!1 &1312574273513674
 GameObject:
   m_ObjectHideFlags: 0

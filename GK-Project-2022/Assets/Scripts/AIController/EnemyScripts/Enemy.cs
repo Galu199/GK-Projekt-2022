@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
     {
         if (collider == null) return;
         if (!readyToAtack) return;
+        if (collider.GetComponent<Health>() == null) return;
         collider.GetComponent<Health>().UpdateHealthBar(DMG);
         readyToAtack = false;
     }

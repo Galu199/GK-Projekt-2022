@@ -86,11 +86,13 @@
     <Compile Include="Assets\Scripts\AIController\NavMeshComponents\NavMeshLink.cs" />
     <Compile Include="Assets\Resources\Standard Assets\ParticleSystems\Scripts\ExplosionPhysicsForce.cs" />
     <Compile Include="Assets\Scripts\AIController\NavMeshComponents\NavMeshSurface.cs" />
+    <Compile Include="Assets\Resources\SimpleMessageBox\Scripts\Consts.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Utility\TimedObjectActivator.cs" />
     <Compile Include="Assets\dontKnow\Mini First Person Controller\Scripts\FirstPersonLook.cs" />
     <Compile Include="Assets\Scripts\AIController\EnemyScripts\Enemy.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Utility\WaypointCircuit.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Utility\CameraRefocus.cs" />
+    <Compile Include="Assets\Resources\SimpleMessageBox\Scripts\Helpers.cs" />
     <Compile Include="Assets\Resources\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
     <Compile Include="Assets\Resources\Standard Assets\CrossPlatformInput\Scripts\Joystick.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Utility\TimedObjectDestructor.cs" />
@@ -156,6 +158,7 @@
     <Compile Include="Assets\Scripts\ObjectsScripts\Item.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Characters\FirstPersonCharacter\Scripts\HeadBob.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Cameras\Scripts\LookatTarget.cs" />
+    <Compile Include="Assets\Resources\SimpleMessageBox\Scripts\MessageBox.cs" />
     <Compile Include="Assets\Resources\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
     <Compile Include="Assets\Resources\Pixelation\Scripts\Pixelation.cs" />
     <Compile Include="Assets\Resources\Standard Assets\ParticleSystems\Scripts\Hose.cs" />
@@ -163,9 +166,7 @@
     <Compile Include="Assets\dontKnow\Mini First Person Controller\Scripts\Components\GroundCheck.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Utility\FPSCounter.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Utility\SimpleActivatorMenu.cs" />
-    <Compile Include="Assets\Resources\SimpleMessageBox\Scripts\Helpers.cs" />
-    <Compile Include="Assets\Resources\SimpleMessageBox\Scripts\MessageBox.cs" />
-    <Compile Include="Assets\Resources\SimpleMessageBox\Scripts\Consts.cs" />
+    <Compile Include="Assets\Scripts\AIController\EnemyScripts\EnemyGhoulAnimation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\TextMesh Pro\Shaders\TMPro.cginc" />
