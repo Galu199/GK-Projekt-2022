@@ -65,15 +65,22 @@ public class LevelController : MonoBehaviour
                     map = MapTunnelingRoom.Generate(mapX, mapY, spawnX, spawnY, seed);
                 break;
         }
+        //Debug.Log(DebugMap(map));
         AddObjWallToMap.Generate2(ref map, (int)objectId.WallElevator);
+        //Debug.Log(DebugMap(map));
         AddObjWallToMap.Generate2(ref map, (int)objectId.WallPowerSwitch);
+        //Debug.Log(DebugMap(map));
         for (int i = 0; i < 5; i++)
             AddItemToMap.Generate2(ref map, (int)objectId.ItemCoin);
+        //Debug.Log(DebugMap(map));
         if (UnityEngine.Random.Range(0, 2) % 2 == 0)
             AddItemToMap.Generate2(ref map, (int)objectId.ItemBeer);
+        //Debug.Log(DebugMap(map));
         if (UnityEngine.Random.Range(0, 10) % 10 == 0)
             AddItemToMap.Generate2(ref map, (int)objectId.ItemSolder);
+        //Debug.Log(DebugMap(map));
         mapOptimized = optimizeMapWalls.Generate3(map);
+        //Debug.Log(DebugMap(mapOptimized));
         SpawnMap(mapOptimized);
         aiController.SpawnEnemies();
         MovePlayerToSpawn();
@@ -172,4 +179,18 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    private string PrintMapToString(List<List<int>> _map)
+    {
+        var response = "";
+        foreach(var row in _map)
+        {
+            var rowtext = "|";
+            foreach (var cel in row)
+            {
+                rowtext += cel + "|";
+            }
+            response += rowtext + "\n";
+        }
+        return response;
+    }
 }

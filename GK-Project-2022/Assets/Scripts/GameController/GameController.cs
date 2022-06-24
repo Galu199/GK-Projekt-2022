@@ -1,8 +1,15 @@
-using Main.Assets.Scripts;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Main.Assets.Scripts;
+using System;
+using System.Collections.Generic;
+
+[Serializable]
+public struct AucioClipItem
+{
+    public string name;
+    public AudioClip clip;
+}
 
 public class GameController : MonoBehaviour
 {
@@ -10,8 +17,11 @@ public class GameController : MonoBehaviour
     public AIController aiController;
     public SelectionManager selectionManager;
     public GameObject player;
+    public AudioSource audioSourceForItems;
+    public List<AucioClipItem> clips;
     public GameObject UI;
     public int level = 0;
+    public int ECTS_cost = 75;
     public bool GenerateEnemies = true;
     public bool GenerateMap = true;
     public bool PowerOn = false;
@@ -36,30 +46,31 @@ public class GameController : MonoBehaviour
         SelectionManager.OnElevatorClick -= IfElevatorButtonIsPressed;
         SelectionManager.OnPowerClick -= IfElevatorPowerSwitchIsPressed;
         SelectionManager.OnItemClick -= IfItemIsClickedPutItInInventory;
-        if(player!=null) player.GetComponent<Equipment>().ItemUsed -= Inventory_ItemUsed;
+        if (player != null) player.GetComponent<Equipment>().ItemUsed -= Inventory_ItemUsed;
     }
 
 
     private void GenerateLevel(int level)
     {
+        audioSourceForItems.clip = null;
         aiController.numberOfenemies = 1;
-        levelController.seed = (int)(level*Time.deltaTime*Random.Range(10000000,90000000));
+        levelController.seed = (int)(level * Time.deltaTime * UnityEngine.Random.Range(10000000, 90000000));
         switch (level % 5)
         {
             case 0:
                 levelController.MapGenNumber = 2;
-                levelController.mapX = Random.Range(7, 15);
-                levelController.mapY = Random.Range(7, 15);
+                levelController.mapX = UnityEngine.Random.Range(7, 15);
+                levelController.mapY = UnityEngine.Random.Range(7, 15);
                 break;
             default:
                 levelController.MapGenNumber = 1;
-                levelController.mapX = Random.Range(10, 21);
-                levelController.mapY = Random.Range(10, 21);
+                levelController.mapX = UnityEngine.Random.Range(10, 21);
+                levelController.mapY = UnityEngine.Random.Range(10, 21);
                 break;
         }
         levelController.GenerateMap();
     }
-    
+
     private void IfPalyerisDead()
     {
         if (levelController.player.GetComponent<Health>().CurrentHealth <= 0)
@@ -74,6 +85,7 @@ public class GameController : MonoBehaviour
     {
         if (selectionManager.elevatorButtonPressed)
         {
+            PlayThis("button");
             selectionManager.elevatorButtonPressed = false;
             if (PowerOn)
             {
@@ -88,6 +100,7 @@ public class GameController : MonoBehaviour
     {
         if (selectionManager.elevatorPowerPressed)
         {
+            PlayThis("lever");
             selectionManager.elevatorPowerPressed = false;
             PowerOn = true;
             foreach (var item in FindObjectsOfType<ElevatorButton>()) item.TogglePower(PowerOn);
@@ -98,6 +111,7 @@ public class GameController : MonoBehaviour
     {
         if (selectionManager.clickedItem != null)
         {
+            PlayThis("pickup");
             player.GetComponent<Equipment>().AddItem(selectionManager.clickedItem);
             player.GetComponent<Equipment>().DrawInventory();
             //selectionManager.clickedItem.SetActivity(false);
@@ -111,12 +125,15 @@ public class GameController : MonoBehaviour
         var item = e.item;
         if (item.GetType() == typeof(Coin))
         {
-            Debug.Log("Coin used");
+            //Debug.Log("Coin used");
+            PlayThis("coin");
         }
         else
         if (item.GetType() == typeof(Piwo))
         {
-            Debug.Log("Beer used");
+            //Debug.Log("Beer used");
+            if (audioSourceForItems.isPlaying) audioSourceForItems.Stop();
+            PlayThis("beer");
             player.GetComponent<Equipment>().RemoveItem(item);
             player.GetComponent<Equipment>().DrawInventory();
             player.GetComponent<Health>().Reset();
@@ -124,22 +141,30 @@ public class GameController : MonoBehaviour
         else
         if (item.GetType() == typeof(Solder))
         {
-            Debug.Log("Solder used");
+            //Debug.Log("Solder used");
             //TO DO
             // if 75z³ koniec gry win else dialog nie masz hasju na ects-a
-            foreach(var it in player.GetComponent<Equipment>().ListOfItems)
+            foreach (var it in player.GetComponent<Equipment>().ListOfItems)
             {
                 if (it.GetType() != typeof(Coin)) continue;
-                if (it.Stack < 75) continue;
-                
-                    SceneManager.UnloadSceneAsync(1);
-                    SceneManager.LoadSceneAsync(2);
-
+                if (it.Stack < ECTS_cost) continue;
+                SceneManager.UnloadSceneAsync(1);
+                SceneManager.LoadSceneAsync(2);
                 return;
             }
             var messageBox2 = Helpers.BringMessageBox(UI);
-            messageBox2.SetMessage("Potrzebujesz 75z³ na ECTS-a!");
+            messageBox2.SetMessage($"Potrzebujesz {ECTS_cost}z³ na ECTS-a!");
             messageBox2.Dissapear();
         }
     }
+
+    private void PlayThis(string clipName)
+    {
+        if (audioSourceForItems.clip == null || clips.Find(x => x.clip.name == audioSourceForItems.clip.name).name != clipName || !audioSourceForItems.isPlaying)
+        {
+            audioSourceForItems.clip = clips.Find(x => x.name == clipName).clip;
+            audioSourceForItems.Play();
+        }
+    }
+
 }

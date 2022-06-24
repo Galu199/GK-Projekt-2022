@@ -141,6 +141,7 @@
     <Compile Include="Assets\Resources\Standard Assets\Cameras\Scripts\PivotBasedCameraRig.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Utility\AutoMoveAndRotate.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Utility\FOVKick.cs" />
+    <Compile Include="Assets\Music\ghoul\SoundPlayer.cs" />
     <Compile Include="Assets\dontKnow\Mini First Person Controller\Scripts\Components\Crouch.cs" />
     <Compile Include="Assets\dontKnow\demoTesting\BarBehaviour.cs" />
     <Compile Include="Assets\Resources\Standard Assets\ParticleSystems\Scripts\WaterHoseParticles.cs" />
@@ -167,7 +168,6 @@
     <Compile Include="Assets\dontKnow\Mini First Person Controller\Scripts\Components\GroundCheck.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Utility\FPSCounter.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Utility\SimpleActivatorMenu.cs" />
-    <Compile Include="Assets\Music\ghoul\SoundPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\TextMesh Pro\Shaders\TMPro.cginc" />

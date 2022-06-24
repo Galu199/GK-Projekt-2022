@@ -30,7 +30,7 @@ public class StandardEnemyBehaviour : MonoBehaviour
 
     public int scanFrequency = 30;
     public LayerMask layers, occlusionLayers;
-    public List<GameObject> Objects = new List<GameObject>();
+    public List<GameObject> ObjectsInVision = new List<GameObject>();
 
     Collider[] colliders = new Collider[50];
 
@@ -58,7 +58,7 @@ public class StandardEnemyBehaviour : MonoBehaviour
         }
         //PART1
         velocity = agent.velocity.magnitude;
-        if (Objects.Count <= 0)
+        if (ObjectsInVision.Count <= 0)
         {
             agent.speed = (float)speed;
             wander = true;
@@ -73,7 +73,7 @@ public class StandardEnemyBehaviour : MonoBehaviour
             follow = true;
             attack = false;
             agent.speed = (float)speed * 2;
-            if (Vector3.Distance(Objects[0].transform.position, transform.position) < attackRange)
+            if (Vector3.Distance(ObjectsInVision[0].transform.position, transform.position) < attackRange)
             {
                 wander = false;
                 follow = false;
@@ -113,7 +113,7 @@ public class StandardEnemyBehaviour : MonoBehaviour
         }
 
         Gizmos.color = Color.green;
-        foreach (var obj in Objects)
+        foreach (var obj in ObjectsInVision)
         {
             Gizmos.DrawSphere(obj.transform.position, 0.2f);
         }
@@ -140,13 +140,13 @@ public class StandardEnemyBehaviour : MonoBehaviour
     private void Scan()
     {
         count = Physics.OverlapSphereNonAlloc(transform.position, sightRange, colliders, layers, QueryTriggerInteraction.Collide);
-        Objects.Clear();
+        ObjectsInVision.Clear();
         for (int i = 0; i < count; i++)
         {
             GameObject obj = colliders[i].gameObject;
             if (IsInSight(obj))
             {
-                Objects.Add(obj);
+                ObjectsInVision.Add(obj);
             }
         }
     }
@@ -238,7 +238,7 @@ public class StandardEnemyBehaviour : MonoBehaviour
     private void SetGoal()
     {
         //colliders = Physics.OverlapSphere(transform.position, sightRange, isPlayer);
-        if (Objects.Count <= 0)
+        if (ObjectsInVision.Count <= 0)
         {
             float randXCord = Random.Range(-sightRange, sightRange);
             float randZCord = Random.Range(-sightRange, sightRange);
@@ -252,7 +252,7 @@ public class StandardEnemyBehaviour : MonoBehaviour
         else
         {
             hasgoal = true;
-            goal = Objects[0].transform.position;
+            goal = ObjectsInVision[0].transform.position;
             agent.SetDestination(goal);
         }
     }

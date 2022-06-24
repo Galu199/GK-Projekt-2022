@@ -1272,7 +1272,7 @@ NavMeshAgent:
   m_Speed: 1.5
   m_Acceleration: 6
   avoidancePriority: 50
-  m_AngularSpeed: 360
+  m_AngularSpeed: 450
   m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -1305,8 +1305,8 @@ MonoBehaviour:
   cooldown: 2
   time: 0
   velocity: 0
-  sightRange: 10
-  sightangle: 100
+  sightRange: 9
+  sightangle: 60
   sightheight: 4
   meshColor: {r: 1, g: 0, b: 0, a: 0.39215687}
   scanFrequency: 30
@@ -1316,7 +1316,7 @@ MonoBehaviour:
   occlusionLayers:
     serializedVersion: 2
     m_Bits: 1
-  Objects: []
+  ObjectsInVision: []
 --- !u!114 &2441811987655249068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1972,7 +1972,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 11
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -1980,22 +1980,31 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.1
+      time: 0
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -11.004398
+      outSlope: -11.004398
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 0.10998535
-      inSlope: -0.18731032
-      outSlope: -0.18731032
+      time: 0.07619719
+      value: 0.6755304
+      inSlope: -2.0546484
+      outSlope: -2.0546484
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.15750289
+      inWeight: 0.33333334
+      outWeight: 0.08212213
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.090945326
+      outSlope: -0.090945326
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
