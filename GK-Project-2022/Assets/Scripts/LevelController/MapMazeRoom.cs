@@ -4,6 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/* Maze Generator Algorytm
+ * Map size have to be odd
+ * creates maze by choosing the direction of a tunnel based on free space
+ * if tunnel has no more room to grow it reverse it's steps to find every posible free space
+ * generaton ends when there are no more free space left
+ */
 public class MapMazeRoom
 {
     static public List<List<int>> Generate(int sizeX = 3, int sizeY = 3, int spawnX = 1, int spawnY = 1, int seed = 0)
